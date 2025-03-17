@@ -1,10 +1,10 @@
 import math
 import streamlit as st
 from openpyxl import load_workbook
-st.set_page_config("Gearbox & Gearless Calculator", layout="wide")
-wb = load_workbook('Data-Ranjbar-Gearbox&Gearless.xlsx')
+st.set_page_config("Elevator Calculator", layout="wide")
+wb = load_workbook('Data-Ranjbar.xlsx')
 with st.sidebar:
-    st.title("تحلیل محاسبات موتور گیربکس و گیرلس")
+    st.title("تحلیل محاسبات آسانسور")
 cols = st.columns(3)
 with cols[0]:
     sheet_names = wb.sheetnames
@@ -12,14 +12,9 @@ with cols[0]:
         if sheet_name == 'Data (1)':
             ws = wb[sheet_name]
             cellb2 = ws['B2']
-            cellc2 = ws['C2']
-            celld2 = ws['D2']
-            new_valueb2 = st.selectbox('نوع موتور', options=[cellc2.value, celld2.value],
-                                       key=f'{cellb2.coordinate}_{sheet_name}')
-            if new_valueb2 == cellc2.value:
-                cellb2.value = cellc2.value
-            elif new_valueb2 == celld2.value:
-                cellb2.value = celld2.value
+            new_valueb2 = st.number_input('تعداد آسانسور',
+                                          key=f'{cellb2.coordinate}_{sheet_name}', value=1)
+
 with cols[1]:
     sheet_names = wb.sheetnames
     for sheet_name in sheet_names:
@@ -30,10 +25,7 @@ with cols[1]:
             celld3 = ws['D3']
             celle3 = ws['E3']
             cellf3 = ws['F3']
-            cellg3 = ws['G3']
-            cellh3 = ws['H3']
-            celli3 = ws['I3']
-            new_valueb3 = st.selectbox('ظرفیت (بر حسب نفر)', options=[cellc3.value, celld3.value, celle3.value, cellf3.value, cellg3.value, cellh3.value, celli3.value],
+            new_valueb3 = st.selectbox('ظرفیت (نفر)', options=[cellc3.value, celld3.value, celle3.value, cellf3.value],
                                        key=f'{cellb3.coordinate}_{sheet_name}')
             if new_valueb3 == cellc3.value:
                 cellb3.value = cellc3.value
@@ -43,2593 +35,1888 @@ with cols[1]:
                 cellb3.value = celle3.value
             elif new_valueb3 == cellf3.value:
                 cellb3.value = cellf3.value
-            elif new_valueb3 == cellg3.value:
-                cellb3.value = cellg3.value
-            elif new_valueb3 == cellh3.value:
-                cellb3.value = cellh3.value
-            elif new_valueb3 == celli3.value:
-                cellb3.value = celli3.value
 with cols[2]:
     sheet_names = wb.sheetnames
     for sheet_name in sheet_names:
         if sheet_name == 'Data (1)':
             ws = wb[sheet_name]
+            cellb3 = ws['B3']
+            cellc3 = ws['C3']
+            celld3 = ws['D3']
+            celle3 = ws['E3']
+            cellf3 = ws['F3']
             cellb4 = ws['B4']
             cellc4 = ws['C4']
             celld4 = ws['D4']
-            celle4 = ws['E4']
-            cellf4 = ws['F4']
-            cellg4 = ws['G4']
-            cellh4 = ws['H4']
-            celli4 = ws['I4']
-            cellj4 = ws['J4']
-            cellk4 = ws['K4']
-            celll4 = ws['L4']
-            cellm4 = ws['M4']
-            celln4 = ws['N4']
-            cello4 = ws['O4']
-            cellp4 = ws['P4']
-            cellq4 = ws['Q4']
-            cellr4 = ws['R4']
-            if cellb2.value == cellc2.value:
-                if cellb3.value == cellc3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[cellc4.value, celld4.value, celle4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == cellc4.value:
-                        cellb4.value = cellc4.value
-                    elif new_valueb4 == celld4.value:
-                        cellb4.value = celld4.value
-                    elif new_valueb4 == celle4.value:
-                        cellb4.value = celle4.value
-                elif cellb3.value == celld3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[celld4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == celld4.value:
-                        cellb4.value = celld4.value
-                elif cellb3.value == celle3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[celle4.value, cellf4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == celle4.value:
-                        cellb4.value = celle4.value
-                    elif new_valueb4 == cellf4.value:
-                        cellb4.value = cellf4.value
-                elif cellb3.value == cellf3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[celle4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == celle4.value:
-                        cellb4.value = celle4.value
-                elif cellb3.value == cellg3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[cellf4.value, cellg4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == cellf4.value:
-                        cellb4.value = cellf4.value
-                    elif new_valueb4 == cellg4.value:
-                        cellb4.value = cellg4.value
-                elif cellb3.value == cellh3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[cellf4.value, cellh4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == cellf4.value:
-                        cellb4.value = cellf4.value
-                    elif new_valueb4 == cellh4.value:
-                        cellb4.value = cellh4.value
-                elif cellb3.value == celli3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[cellg4.value, celli4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == cellg4.value:
-                        cellb4.value = cellg4.value
-                    elif new_valueb4 == celli4.value:
-                        cellb4.value = celli4.value
-            elif cellb2.value == celld2.value:
-                if cellb3.value == cellc3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)',
-                                               options=[cellj4.value, cellc4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == cellj4.value:
-                        cellb4.value = cellj4.value
-                    elif new_valueb4 == cellc4.value:
-                        cellb4.value = cellc4.value
-                elif cellb3.value == celld3.value or cellb3.value == celle3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[cellk4.value, cellm4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == cellk4.value:
-                        cellb4.value = cellk4.value
-                    elif new_valueb4 == cellm4.value:
-                        cellb4.value = cellm4.value
-                elif cellb3.value == cellf3.value or cellb3.value == cellg3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[celll4.value, cello4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == celll4.value:
-                        cellb4.value = celll4.value
-                    elif new_valueb4 == cello4.value:
-                        cellb4.value = cello4.value
-                elif cellb3.value == cellh3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[celln4.value, cellq4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == celln4.value:
-                        cellb4.value = celln4.value
-                    elif new_valueb4 == cellq4.value:
-                        cellb4.value = cellq4.value
-                elif cellb3.value == celli3.value:
-                    new_valueb4 = st.selectbox('توان خروجی موتور (بر حسب کیلووات)', options=[cellp4.value, cellr4.value],
-                                               key=f'{cellb4.coordinate}_{sheet_name}')
-                    if new_valueb4 == cellp4.value:
-                        cellb4.value = cellp4.value
-                    elif new_valueb4 == cellr4.value:
-                        cellb4.value = cellr4.value
-
+            if cellb3.value == cellc3.value:
+                new_valueb4 = st.selectbox('نوع آسانسور', options=[cellc4.value],
+                                           key=f'{cellb4.coordinate}_{sheet_name}')
+                if new_valueb4 == cellc4.value:
+                    cellb4.value = cellc4.value
+            elif cellb3.value == celld3.value:
+                new_valueb4 = st.selectbox('نوع آسانسور', options=[cellc4.value, celld4.value],
+                                           key=f'{cellb4.coordinate}_{sheet_name}')
+                if new_valueb4 == cellc4.value:
+                    cellb4.value = cellc4.value
+                elif new_valueb4 == celld4.value:
+                    cellb4.value = celld4.value
+            elif cellb3.value == celle3.value or cellb3.value == cellf3.value:
+                new_valueb4 = st.selectbox('نوع آسانسور', options=[celld4.value],
+                                           key=f'{cellb4.coordinate}_{sheet_name}')
+                if new_valueb4 == celld4.value:
+                    cellb4.value = celld4.value
 
 cols = st.columns(3)
+with cols[0]:
+    sheet_names = wb.sheetnames
+    for sheet_name in sheet_names:
+        if sheet_name == 'Data (1)':
+            ws = wb[sheet_name]
+            cellb10 = ws['B10']
+            new_valueb10 = st.number_input('چاهک',
+                                           key=f'{cellb10.coordinate}_{sheet_name}', value=1.5)
 with cols[1]:
     sheet_names = wb.sheetnames
     for sheet_name in sheet_names:
         if sheet_name == 'Data (1)':
             ws = wb[sheet_name]
-            cellb5 = ws['B5']
-            cellc5 = ws['C5']
-            celld5 = ws['D5']
-            if cellb2.value == cellc2.value:
-                if cellb3.value == cellc3.value:
-                    new_valueb5 = st.selectbox('حداکثر سرعت (بر حسب متر بر ثانیه)',
-                                               options=[cellc5.value, celld5.value],
-                                               key=f'{cellb5.coordinate}_{sheet_name}')
-                    if new_valueb5 == cellc5.value:
-                        cellb5.value = cellc5.value
-                    elif new_valueb5 == celld5.value:
-                        cellb5.value = celld5.value
-                elif cellb3.value == celld3.value:
-                    new_valueb5 = st.selectbox('حداکثر سرعت (بر حسب متر بر ثانیه)',
-                                               options=[cellc5.value],
-                                               key=f'{cellb5.coordinate}_{sheet_name}')
-                    if new_valueb5 == cellc5.value:
-                        cellb5.value = cellc5.value
-                elif cellb3.value == celle3.value:
-                    new_valueb5 = st.selectbox('حداکثر سرعت (بر حسب متر بر ثانیه)',
-                                               options=[cellc5.value, celld5.value],
-                                               key=f'{cellb5.coordinate}_{sheet_name}')
-                    if new_valueb5 == cellc5.value:
-                        cellb5.value = cellc5.value
-                    elif new_valueb5 == celld5.value:
-                        cellb5.value = celld5.value
-                elif cellb3.value == cellf3.value:
-                    new_valueb5 = st.selectbox('حداکثر سرعت (بر حسب متر بر ثانیه)',
-                                               options=[cellc5.value],
-                                               key=f'{cellb5.coordinate}_{sheet_name}')
-                    if new_valueb5 == cellc5.value:
-                        cellb5.value = cellc5.value
-                elif cellb3.value == cellg3.value:
-                    new_valueb5 = st.selectbox('حداکثر سرعت (بر حسب متر بر ثانیه)',
-                                               options=[cellc5.value, celld5.value],
-                                               key=f'{cellb5.coordinate}_{sheet_name}')
-                    if new_valueb5 == cellc5.value:
-                        cellb5.value = cellc5.value
-                    elif new_valueb5 == celld5.value:
-                        cellb5.value = celld5.value
-                elif cellb3.value == cellh3.value:
-                    new_valueb5 = st.selectbox('حداکثر سرعت (بر حسب متر بر ثانیه)',
-                                               options=[cellc5.value, celld5.value],
-                                               key=f'{cellb5.coordinate}_{sheet_name}')
-                    if new_valueb5 == cellc5.value:
-                        cellb5.value = cellc5.value
-                    elif new_valueb5 == celld5.value:
-                        cellb5.value = celld5.value
-                elif cellb3.value == celli3.value:
-                    new_valueb5 = st.selectbox('حداکثر سرعت (بر حسب متر بر ثانیه)',
-                                               options=[cellc5.value, celld5.value],
-                                               key=f'{cellb5.coordinate}_{sheet_name}')
-                    if new_valueb5 == cellc5.value:
-                        cellb5.value = cellc5.value
-                    elif new_valueb5 == celld5.value:
-                        cellb5.value = celld5.value
-            elif cellb2.value == celld2.value:
-                new_valueb5 = st.selectbox('حداکثر سرعت (بر حسب متر بر ثانیه)',
-                                           options=[cellc5.value, celld5.value],
-                                           key=f'{cellb5.coordinate}_{sheet_name}')
-                if new_valueb5 == cellc5.value:
-                    cellb5.value = cellc5.value
-                elif new_valueb5 == celld5.value:
-                    cellb5.value = celld5.value
+            cellb6 = ws['B6']
+            cellc6 = ws['C6']
+            celld6 = ws['D6']
+            celle6 = ws['E6']
+            cellf6 = ws['F6']
+            cellg6 = ws['G6']
+            cellh6 = ws['H6']
+            celli6 = ws['I6']
+            new_valueb6 = st.selectbox('تعداد توقف',
+                                       options=[cellc6.value, celld6.value, celle6.value, cellf6.value, cellg6.value,
+                                                cellh6.value, celli6.value],
+                                       key=f'{cellb6.coordinate}_{sheet_name}')
+            if new_valueb6 == cellc6.value:
+                cellb6.value = cellc6.value
+            elif new_valueb6 == celld6.value:
+                cellb6.value = celld6.value
+            elif new_valueb6 == celle6.value:
+                cellb6.value = celle6.value
+            elif new_valueb6 == cellf6.value:
+                cellb6.value = cellf6.value
+            elif new_valueb6 == cellg6.value:
+                cellb6.value = cellg6.value
+            elif new_valueb6 == cellh6.value:
+                cellb6.value = cellh6.value
+            elif new_valueb6 == celli6.value:
+                cellb6.value = celli6.value
+with cols[2]:
+    sheet_names = wb.sheetnames
+    for sheet_name in sheet_names:
+        if sheet_name == 'Data (1)':
+            ws = wb[sheet_name]
+            cellb14 = ws['B14']
+            cellc14 = ws['C14']
+            celld14 = ws['D14']
+            celle14 = ws['E14']
+            new_valueb14 = st.selectbox('عرض وزنه تعادل', options=[cellc14.value, celld14.value, celle14.value],
+                                        key=f'{cellb14.coordinate}_{sheet_name}')
+            if new_valueb14 == cellc14.value:
+                cellb14.value = cellc14.value
+            elif new_valueb14 == celld14.value:
+                cellb14.value = celld14.value
+            elif new_valueb14 == celle14.value:
+                cellb14.value = celle14.value
+
+cols = st.columns(3)
+with cols[0]:
+    sheet_names = wb.sheetnames
+    for sheet_name in sheet_names:
+        if sheet_name == 'Data (1)':
+            ws = wb[sheet_name]
+            cellb9 = ws['B9']
+            new_valueb9 = st.number_input('اورهد',
+                                          key=f'{cellb9.coordinate}_{sheet_name}', value=3.9)
+with cols[1]:
+    sheet_names = wb.sheetnames
+    for sheet_name in sheet_names:
+        if sheet_name == 'Data (1)':
+            ws = wb[sheet_name]
+            cellb11 = ws['B11']
+            cellc11 = ws['C11']
+            celld11 = ws['D11']
+            new_valueb11 = st.selectbox('نوع درب', options=[cellc11.value, celld11.value],
+                                        key=f'{cellb11.coordinate}_{sheet_name}')
+            if new_valueb11 == cellc11.value:
+                cellb11.value = cellc11.value
+            elif new_valueb11 == celld11.value:
+                cellb11.value = celld11.value
+with cols[2]:
+    sheet_names = wb.sheetnames
+    for sheet_name in sheet_names:
+        if sheet_name == 'Data (1)':
+            ws = wb[sheet_name]
+            cellb11 = ws['B11']
+            cellc11 = ws['C11']
+            celld11 = ws['D11']
+            cellb13 = ws['B13']
+            cellc13 = ws['C13']
+            celld13 = ws['D13']
+            celle13 = ws['E13']
+            if cellb11.value == cellc11.value:
+                new_valueb13 = st.selectbox('جهت درب', options=[cellc13.value, celld13.value, celle13.value],
+                                            key=f'{cellb13.coordinate}_{sheet_name}')
+                if new_valueb13 == cellc13.value:
+                    cellb13.value = cellc13.value
+                elif new_valueb13 == celld13.value:
+                    cellb13.value = celld13.value
+                elif new_valueb13 == celle13.value:
+                    cellb13.value = celle13.value
+            elif cellb11.value == celld11.value:
+                new_valueb13 = st.selectbox('جهت درب', options=[cellc13.value, celld13.value],
+                                            key=f'{cellb13.coordinate}_{sheet_name}')
+                if new_valueb13 == cellc13.value:
+                    cellb13.value = cellc13.value
+                elif new_valueb13 == celld13.value:
+                    cellb13.value = celld13.value
+
+cols = st.columns(3)
+with cols[1]:
+    cellb11 = ws['B11']
+    cellc11 = ws['C11']
+    celld11 = ws['D11']
+    cellb12 = ws['B12']
+    cellc12 = ws['C12']
+    celld12 = ws['D12']
+    celle12 = ws['E12']
+    cellf12 = ws['F12']
+    if cellb11.value == cellc11.value:
+        new_valueb12 = st.selectbox('عرض درب',
+                                    options=[cellc12.value, celld12.value, celle12.value, cellf12.value],
+                                    key=f'{cellb12.coordinate}_{sheet_name}')
+        if new_valueb12 == cellc12.value:
+            cellb12.value = cellc12.value
+        elif new_valueb12 == celld12.value:
+            cellb12.value = celld12.value
+        elif new_valueb12 == celle12.value:
+            cellb12.value = celle12.value
+        elif new_valueb12 == cellf12.value:
+            cellb12.value = cellf12.value
+    elif cellb11.value == celld11.value:
+        new_valueb12 = st.selectbox('عرض درب', options=[cellc12.value, celld12.value, celle12.value],
+                                    key=f'{cellb12.coordinate}_{sheet_name}')
+        if new_valueb12 == cellc12.value:
+            cellb12.value = cellc12.value
+        elif new_valueb12 == celld12.value:
+            cellb12.value = celld12.value
+        elif new_valueb12 == celle12.value:
+            cellb12.value = celle12.value
+
 
 if st.button('ثبت'):
     ws1 = wb['Data (1)']
     ws2 = wb['Data (2)']
-    if ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['C3'].value and ws1['B4'].value == ws1['C4'].value:
-        MotorDescription = f"""
-        <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A2'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A2'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['C3'].value and ws1['B4'].value == ws1['D4'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A3'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A3'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['D3'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A4'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A4'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['C3'].value and ws1['B5'].value == ws1['D5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A5'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A5'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['E3'].value and ws1['B5'].value == ws1['C5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A6'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A6'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['E3'].value and ws1['B5'].value == ws1['D5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A7'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A7'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['F3'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A8'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A8'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['G3'].value and ws1['B5'].value == ws1['C5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A9'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A9'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['G3'].value and ws1['B5'].value == ws1['D5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A10'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A10'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['H3'].value and ws1['B5'].value == ws1['C5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A11'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A11'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['H3'].value and ws1['B5'].value == ws1['D5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A12'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A12'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['I3'].value and ws1['B5'].value == ws1['C5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A13'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A13'].value
-    elif ws1['B2'].value == ws1['C2'].value and ws1['B3'].value == ws1['I3'].value and ws1['B5'].value == ws1['D5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A14'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A14'].value
-    elif ws1['B2'].value == ws1['D2'].value and ws1['B3'].value == ws1['C3'].value and ws1['B5'].value == ws1['C5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A16'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A16'].value
-    elif ws1['B2'].value == ws1['D2'].value and ws1['B3'].value == ws1['C3'].value and ws1['B5'].value == ws1['D5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A17'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A17'].value
-    elif ws1['B2'].value == ws1['D2'].value and (ws1['B3'].value == ws1['D3'].value or ws1['B3'].value == ws1['E3'].value) and ws1['B5'].value == ws1['C5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A18'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A18'].value
-    elif ws1['B2'].value == ws1['D2'].value and (ws1['B3'].value == ws1['D3'].value or ws1['B3'].value == ws1['E3'].value) and ws1['B5'].value == ws1['D5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A19'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A19'].value
-    elif ws1['B2'].value == ws1['D2'].value and (ws1['B3'].value == ws1['F3'].value or ws1['B3'].value == ws1['G3'].value) and ws1['B5'].value == ws1['C5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A20'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A20'].value
-    elif ws1['B2'].value == ws1['D2'].value and (ws1['B3'].value == ws1['F3'].value or ws1['B3'].value == ws1['G3'].value) and ws1['B5'].value == ws1['D5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A21'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A21'].value
-    elif ws1['B2'].value == ws1['D2'].value and (ws1['B3'].value == ws1['H3'].value) and ws1['B5'].value == ws1['C5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A22'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A22'].value
-    elif ws1['B2'].value == ws1['D2'].value and (ws1['B3'].value == ws1['H3'].value) and ws1['B5'].value == ws1['D5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A23'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A23'].value
-    elif ws1['B2'].value == ws1['D2'].value and (ws1['B3'].value == ws1['I3'].value) and ws1['B5'].value == ws1['C5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A24'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A24'].value
-    elif ws1['B2'].value == ws1['D2'].value and (ws1['B3'].value == ws1['I3'].value) and ws1['B5'].value == ws1['D5'].value:
-        MotorDescription = f"""
-        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A25'].value}</div>
-        """
-        st.markdown(MotorDescription, unsafe_allow_html=True)
-        ws2['A1'].value = ws2['A25'].value
+    new_valueb3 = ws1['B3'].value
+    new_valuec3 = ws1['C3'].value
+    new_valued3 = ws1['D3'].value
+    new_valuee3 = ws1['E3'].value
+    new_valuef3 = ws1['F3'].value
+    new_valueb8 = (new_valueb6 - 1) * 3.4
+    new_valueb11 = ws1['B11'].value
+    new_valuec11 = ws1['C11'].value
+    new_valued11 = ws1['D11'].value
+    new_valueb12 = ws1['B12'].value
+    new_valuec12 = ws1['C12'].value
+    new_valued12 = ws1['D12'].value
+    new_valuee12 = ws1['E12'].value
+    new_valuef12 = ws1['F12'].value
+    new_valueb13 = ws1['B13'].value
+    new_valuec13 = ws1['C13'].value
+    new_valued13 = ws1['D13'].value
+    new_valuee13 = ws1['E13'].value
+    new_valueb6 = ws1['B6'].value
+    new_valuec6 = ws1['C6'].value
+    new_valued6 = ws1['D6'].value
+    new_valuee6 = ws1['E6'].value
+    new_valuef6 = ws1['F6'].value
+    new_valueg6 = ws1['G6'].value
+    new_valueh6 = ws1['H6'].value
+    new_valuei6 = ws1['I6'].value
+    new_valueb14 = ws1['B14'].value
+    new_valuec14 = ws1['C14'].value
+    new_valued14 = ws1['D14'].value
+    new_valuee14 = ws1['E14'].value
     cols = st.columns(2)
     with cols[0]:
-        Description = f"""
-                        <div  style='padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>مشخصات </div>
+        EquipmentDescription = f"""
+                        <div  style='padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>شرح متریال</div>
                         """
-        st.markdown(Description, unsafe_allow_html=True)
+        st.markdown(EquipmentDescription, unsafe_allow_html=True)
     with cols[1]:
         QuantityDescription = f"""
-                                <div  style='padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>مقدار</div>
+                                <div  style='padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>تعداد</div>
                                 """
         st.markdown(QuantityDescription, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            GearboxRatioDescription = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B1'].value}</div>
-                                    """
-            st.markdown(GearboxRatioDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            MaxAxleLoadDescription = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B15'].value}</div>
-                                    """
-            st.markdown(MaxAxleLoadDescription, unsafe_allow_html=True)
+        if ws1['B3'].value == ws1['C3'].value:
+            MotorDescription = f"""
+            <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A2'].value}</div>
+            """
+            st.markdown(MotorDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['D3'].value and ws1['B4'].value == ws1['C4'].value:
+            MotorDescription = f"""
+            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A3'].value}</div>
+            """
+            st.markdown(MotorDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['D3'].value and ws1['B4'].value == ws1['D4'].value:
+            MotorDescription = f"""
+            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A4'].value}</div>
+            """
+            st.markdown(MotorDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['E3'].value or ws1['B3'].value == ws1['F3'].value:
+            MotorDescription = f"""
+            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['A5'].value}</div>
+            """
+            st.markdown(MotorDescription, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B2'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B3'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B4'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B5'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B6'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B7'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B8'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B9'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B10'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B11'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B12'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B13'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            GearboxRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B14'].value}</div>
-            """
-            st.markdown(GearboxRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            MaxAxleLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B16'].value}</div>
-            """
-            st.markdown(MaxAxleLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            MaxAxleLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B17'].value}</div>
-            """
-            st.markdown(MaxAxleLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            MaxAxleLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B18'].value}</div>
-            """
-            st.markdown(MaxAxleLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            MaxAxleLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B19'].value}</div>
-            """
-            st.markdown(MaxAxleLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            MaxAxleLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B20'].value}</div>
-            """
-            st.markdown(MaxAxleLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            MaxAxleLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B21'].value}</div>
-            """
-            st.markdown(MaxAxleLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            MaxAxleLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B22'].value}</div>
-            """
-            st.markdown(MaxAxleLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            MaxAxleLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B23'].value}</div>
-            """
-            st.markdown(MaxAxleLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            MaxAxleLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B24'].value}</div>
-            """
-            st.markdown(MaxAxleLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            MaxAxleLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B25'].value}</div>
-            """
-            st.markdown(MaxAxleLoadQuantity, unsafe_allow_html=True)
+        MotorQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{int(new_valueb2)}</div>
+                """
+        st.markdown(MotorQuantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            MaxStaticLoadDescription = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C1'].value}</div>
-                                    """
-            st.markdown(MaxStaticLoadDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            RatedTorqueDescription = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C15'].value}</div>
-                                                """
-            st.markdown(RatedTorqueDescription, unsafe_allow_html=True)
+        if ws1['B3'].value == ws1['F3'].value:
+            RailT90Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B2'].value}</div>
+                    """
+            st.markdown(RailT90Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C2'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C3'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C4'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C5'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C6'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C7'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C8'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C9'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C10'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C11'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C12'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C13'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            MaxStaticLoadQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C14'].value}</div>
-            """
-            st.markdown(MaxStaticLoadQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            RatedTorqueQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C16'].value}</div>
-            """
-            st.markdown(RatedTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            RatedTorqueQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C17'].value}</div>
-            """
-            st.markdown(RatedTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            RatedTorqueQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C18'].value}</div>
-            """
-            st.markdown(RatedTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            RatedTorqueQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C19'].value}</div>
-            """
-            st.markdown(RatedTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            RatedTorqueQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C20'].value}</div>
-            """
-            st.markdown(RatedTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            RatedTorqueQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C21'].value}</div>
-            """
-            st.markdown(RatedTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            RatedTorqueQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C22'].value}</div>
-            """
-            st.markdown(RatedTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            RatedTorqueQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C23'].value}</div>
-            """
-            st.markdown(RatedTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            RatedTorqueQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C24'].value}</div>
-            """
-            st.markdown(RatedTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            RatedTorqueQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C25'].value}</div>
-            """
-            st.markdown(RatedTorqueQuantity, unsafe_allow_html=True)
+        if new_valueb3 == new_valuef3:
+            if (((new_valueb8 + new_valueb9 + new_valueb10)*0.4) - int((new_valueb8 + new_valueb9 + new_valueb10)*0.4) > 0.1):
+                RailT90Quantity = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*(int((new_valueb8 + new_valueb9 + new_valueb10)*0.4)+1)}</div>
+                                    """
+                st.markdown(RailT90Quantity, unsafe_allow_html=True)
+            else:
+                RailT90Quantity = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*(int((new_valueb8 + new_valueb9 + new_valueb10)*0.4))}</div>
+                                    """
+                st.markdown(RailT90Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            GearboxEfficiencyDescription = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D1'].value}</div>
-                                    """
-            st.markdown(GearboxEfficiencyDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            TractionRatioDescription = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D15'].value}</div>
-                                                """
-            st.markdown(TractionRatioDescription, unsafe_allow_html=True)
+        if ws1['B3'].value == ws1['F3'].value:
+            PoshtBandRailT90Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C2'].value}</div>
+                    """
+            st.markdown(PoshtBandRailT90Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D2'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D3'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D4'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D5'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D6'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D7'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D8'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D9'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D10'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D11'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D12'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D13'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            GearboxEfficiencyQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D14'].value}</div>
-            """
-            st.markdown(GearboxEfficiencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            TractionRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D16'].value}</div>
-            """
-            st.markdown(TractionRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            TractionRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D17'].value}</div>
-            """
-            st.markdown(TractionRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            TractionRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D18'].value}</div>
-            """
-            st.markdown(TractionRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            TractionRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D19'].value}</div>
-            """
-            st.markdown(TractionRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            TractionRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D20'].value}</div>
-            """
-            st.markdown(TractionRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            TractionRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D21'].value}</div>
-            """
-            st.markdown(TractionRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            TractionRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D22'].value}</div>
-            """
-            st.markdown(TractionRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            TractionRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D23'].value}</div>
-            """
-            st.markdown(TractionRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            TractionRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D24'].value}</div>
-            """
-            st.markdown(TractionRatioQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            TractionRatioQuantity = f"""
-            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D25'].value}</div>
-            """
-            st.markdown(TractionRatioQuantity, unsafe_allow_html=True)
+        if new_valueb3 == new_valuef3:
+            if (((new_valueb8 + new_valueb9 + new_valueb10)*0.4) - int((new_valueb8 + new_valueb9 + new_valueb10)*0.4) > 0.1):
+                RailT90Quant = (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4) + 1)
+                if (RailT90Quant / new_valueb2) % 2 == 0:
+                    PoshtBandRailT90Quantity = f"""
+                                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*int((RailT90Quant / new_valueb2) - 2)}</div>
+                                                        """
+                    st.markdown(PoshtBandRailT90Quantity, unsafe_allow_html=True)
+                else:
+                    PoshtBandRailT90Quantity = f"""
+                                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*int((RailT90Quant / new_valueb2) - 1)}</div>
+                                                        """
+                    st.markdown(PoshtBandRailT90Quantity, unsafe_allow_html=True)
+                # PoshtBandRailT90Quantity = f"""
+                #                                     <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4) + 1)}</div>
+                #                                     """
+                # st.markdown(PoshtBandRailT90Quantity, unsafe_allow_html=True)
+            else:
+                RailT90Quant = (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4))
+                if (RailT90Quant / new_valueb2) % 2 == 0:
+                    PoshtBandRailT90Quantity = f"""
+                                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*int((RailT90Quant / new_valueb2) - 2)}</div>
+                                                            """
+                    st.markdown(PoshtBandRailT90Quantity, unsafe_allow_html=True)
+                else:
+                    PoshtBandRailT90Quantity = f"""
+                                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*((RailT90Quant / new_valueb2) - 1)}</div>
+                                                            """
+                    st.markdown(PoshtBandRailT90Quantity, unsafe_allow_html=True)
+                # PoshtBandRailT90Quantity = f"""
+                #                                     <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4))}</div>
+                #                                     """
+                # st.markdown(PoshtBandRailT90Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            RopeQtyDescription = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E1'].value}</div>
-                                        """
-            st.markdown(RopeQtyDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            RatedSpeedDescription = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E15'].value}</div>
-                                                    """
-            st.markdown(RatedSpeedDescription, unsafe_allow_html=True)
+        if ws1['B3'].value != ws1['F3'].value:
+            RailT70Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B3'].value}</div>
+                    """
+            st.markdown(RailT70Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            RopeQtyQuantity = f"""
-                <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E2'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E3'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E4'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E5'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E6'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E7'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E8'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E9'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E10'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E11'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E12'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E13'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            RopeQtyQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E14'].value}</div>
-                """
-            st.markdown(RopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            RatedSpeedQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E16'].value}</div>
-                """
-            st.markdown(RatedSpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            RatedSpeedQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E17'].value}</div>
-                """
-            st.markdown(RatedSpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            RatedSpeedQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E18'].value}</div>
-                """
-            st.markdown(RatedSpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            RatedSpeedQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E19'].value}</div>
-                """
-            st.markdown(RatedSpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            RatedSpeedQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E20'].value}</div>
-                """
-            st.markdown(RatedSpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            RatedSpeedQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E21'].value}</div>
-                """
-            st.markdown(RatedSpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            RatedSpeedQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E22'].value}</div>
-                """
-            st.markdown(RatedSpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            RatedSpeedQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E23'].value}</div>
-                """
-            st.markdown(RatedSpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            RatedSpeedQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E24'].value}</div>
-                """
-            st.markdown(RatedSpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            RatedSpeedQuantity = f"""
-                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E25'].value}</div>
-                """
-            st.markdown(RatedSpeedQuantity, unsafe_allow_html=True)
+        if new_valueb3 != new_valuef3:
+            if (((new_valueb8 + new_valueb9 + new_valueb10)*0.4) - int((new_valueb8 + new_valueb9 + new_valueb10)*0.4) > 0.1):
+                RailT70Quantity = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*(int((new_valueb8 + new_valueb9 + new_valueb10)*0.4)+1)}</div>
+                                    """
+                st.markdown(RailT70Quantity, unsafe_allow_html=True)
+            else:
+                RailT70Quantity = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*(int((new_valueb8 + new_valueb9 + new_valueb10)*0.4))}</div>
+                                    """
+                st.markdown(RailT70Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            RopeDiaDescription = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F1'].value}</div>
-                                            """
-            st.markdown(RopeDiaDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            BrakeVoltageDescription = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F15'].value}</div>
-                                                        """
-            st.markdown(BrakeVoltageDescription, unsafe_allow_html=True)
+        if ws1['B3'].value != ws1['F3'].value:
+            PoshtBandRailT70Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C3'].value}</div>
+                    """
+            st.markdown(PoshtBandRailT70Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F2'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F3'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F4'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F5'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F6'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F7'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F8'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F9'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F10'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F11'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F12'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F13'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            RopeDiaQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F14'].value}</div>
-                    """
-            st.markdown(RopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            BrakeVoltageQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F16'].value}</div>
-                    """
-            st.markdown(BrakeVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            BrakeVoltageQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F17'].value}</div>
-                    """
-            st.markdown(BrakeVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            BrakeVoltageQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F18'].value}</div>
-                    """
-            st.markdown(BrakeVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            BrakeVoltageQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F19'].value}</div>
-                    """
-            st.markdown(BrakeVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            BrakeVoltageQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F20'].value}</div>
-                    """
-            st.markdown(BrakeVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            BrakeVoltageQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F21'].value}</div>
-                    """
-            st.markdown(BrakeVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            BrakeVoltageQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F22'].value}</div>
-                    """
-            st.markdown(BrakeVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            BrakeVoltageQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F23'].value}</div>
-                    """
-            st.markdown(BrakeVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            BrakeVoltageQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F24'].value}</div>
-                    """
-            st.markdown(BrakeVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            BrakeVoltageQuantity = f"""
-                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F25'].value}</div>
-                    """
-            st.markdown(BrakeVoltageQuantity, unsafe_allow_html=True)
+        if new_valueb3 != new_valuef3:
+            if (((new_valueb8 + new_valueb9 + new_valueb10)*0.4) - int((new_valueb8 + new_valueb9 + new_valueb10)*0.4) > 0.1):
+                RailT70Quant = (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4) + 1)
+                if (RailT70Quant / new_valueb2) % 2 == 0:
+                    PoshtBandRailT70Quantity = f"""
+                                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*int((RailT70Quant / new_valueb2) - 2)}</div>
+                                                            """
+                    st.markdown(PoshtBandRailT70Quantity, unsafe_allow_html=True)
+                else:
+                    PoshtBandRailT70Quantity = f"""
+                                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*int((RailT70Quant / new_valueb2) - 1)}</div>
+                                                            """
+                    st.markdown(PoshtBandRailT70Quantity, unsafe_allow_html=True)
+                # PoshtBandRailT70Quantity = f"""
+                #                                     <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4) + 1)}</div>
+                #                                     """
+                # st.markdown(PoshtBandRailT70Quantity, unsafe_allow_html=True)
+            else:
+                RailT70Quant = (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4))
+                if (RailT70Quant / new_valueb2) % 2 == 0:
+                    PoshtBandRailT70Quantity = f"""
+                                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*int((RailT70Quant / new_valueb2) - 2)}</div>
+                                                            """
+                    st.markdown(PoshtBandRailT70Quantity, unsafe_allow_html=True)
+                else:
+                    PoshtBandRailT70Quantity = f"""
+                                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*int((RailT70Quant / new_valueb2) - 1)}</div>
+                                                            """
+                    st.markdown(PoshtBandRailT70Quantity, unsafe_allow_html=True)
+                # PoshtBandRailT70Quantity = f"""
+                #                                     <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4))}</div>
+                #                                     """
+                # st.markdown(PoshtBandRailT70Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            GrooveAngleDescription = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G1'].value}</div>
-                                                """
-            st.markdown(GrooveAngleDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            BrakeTorqueDescription = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G15'].value}</div>
-                                                            """
-            st.markdown(BrakeTorqueDescription, unsafe_allow_html=True)
+        RailT50Description = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['B4'].value}</div>
+                                    """
+        st.markdown(RailT50Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G2'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G3'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G4'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G5'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G6'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G7'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G8'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G9'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G10'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G11'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G12'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G13'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            GrooveAngleQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G14'].value}</div>
-                        """
-            st.markdown(GrooveAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            BrakeTorqueQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G16'].value}</div>
-                        """
-            st.markdown(BrakeTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            BrakeTorqueQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G17'].value}</div>
-                        """
-            st.markdown(BrakeTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            BrakeTorqueQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G18'].value}</div>
-                        """
-            st.markdown(BrakeTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            BrakeTorqueQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G19'].value}</div>
-                        """
-            st.markdown(BrakeTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            BrakeTorqueQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G20'].value}</div>
-                        """
-            st.markdown(BrakeTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            BrakeTorqueQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G21'].value}</div>
-                        """
-            st.markdown(BrakeTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            BrakeTorqueQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G22'].value}</div>
-                        """
-            st.markdown(BrakeTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            BrakeTorqueQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G23'].value}</div>
-                        """
-            st.markdown(BrakeTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            BrakeTorqueQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G24'].value}</div>
-                        """
-            st.markdown(BrakeTorqueQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            BrakeTorqueQuantity = f"""
-                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G25'].value}</div>
-                        """
-            st.markdown(BrakeTorqueQuantity, unsafe_allow_html=True)
+        RailT50Quantity = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4) + 1)}</div>
+                                    """
+        st.markdown(RailT50Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            UndercutAngleDescription = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H1'].value}</div>
-                                                    """
-            st.markdown(UndercutAngleDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            VoltageDescription = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H15'].value}</div>
-                                                                """
-            st.markdown(VoltageDescription, unsafe_allow_html=True)
+        PoshtBandRailT50Description = f"""
+                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['C4'].value}</div>
+                                            """
+        st.markdown(PoshtBandRailT50Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H2'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H3'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H4'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H5'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H6'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H7'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H8'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H9'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H10'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H11'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H12'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H13'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            UndercutAngleQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H14'].value}</div>
-                            """
-            st.markdown(UndercutAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            VoltageQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H16'].value}</div>
-                            """
-            st.markdown(VoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            VoltageQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H17'].value}</div>
-                            """
-            st.markdown(VoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            VoltageQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H18'].value}</div>
-                            """
-            st.markdown(VoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            VoltageQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H19'].value}</div>
-                            """
-            st.markdown(VoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            VoltageQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H20'].value}</div>
-                            """
-            st.markdown(VoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            VoltageQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H21'].value}</div>
-                            """
-            st.markdown(VoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            VoltageQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H22'].value}</div>
-                            """
-            st.markdown(VoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            VoltageQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H23'].value}</div>
-                            """
-            st.markdown(VoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            VoltageQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H24'].value}</div>
-                            """
-            st.markdown(VoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            VoltageQuantity = f"""
-                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H25'].value}</div>
-                            """
-            st.markdown(VoltageQuantity, unsafe_allow_html=True)
+        RailT50Quant = (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4) + 1)
+        if (RailT50Quant / new_valueb2) % 2 == 0:
+            PoshtBandRailT50Quantity = f"""
+                                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*int((RailT50Quant / new_valueb2) - 2)}</div>
+                                                    """
+            st.markdown(PoshtBandRailT50Quantity, unsafe_allow_html=True)
+        else:
+            PoshtBandRailT50Quantity = f"""
+                                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*int((RailT50Quant / new_valueb2) - 1)}</div>
+                                                    """
+            st.markdown(PoshtBandRailT50Quantity, unsafe_allow_html=True)
+        # PoshtBandRailT50Quantity = f"""
+        #                                     <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * (int((new_valueb8 + new_valueb9 + new_valueb10) * 0.4) + 1)}</div>
+        #                                     """
+        # st.markdown(PoshtBandRailT50Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            PitchDescription = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I1'].value}</div>
-                                                        """
-            st.markdown(PitchDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            CurrentDescription = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I15'].value}</div>
-                                                                    """
-            st.markdown(CurrentDescription, unsafe_allow_html=True)
+        if ws1['B3'].value == ws1['F3'].value:
+            LoghmeRailT90Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D2'].value}</div>
+                    """
+            st.markdown(LoghmeRailT90Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            PitchQuantity = f"""
-                                <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I2'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I3'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I4'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I5'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I6'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I7'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I8'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I9'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I10'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I11'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I12'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I13'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            PitchQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I14'].value}</div>
-                                """
-            st.markdown(PitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            CurrentQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I16'].value}</div>
-                                """
-            st.markdown(CurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            CurrentQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I17'].value}</div>
-                                """
-            st.markdown(CurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            CurrentQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I18'].value}</div>
-                                """
-            st.markdown(CurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            CurrentQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I19'].value}</div>
-                                """
-            st.markdown(CurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            CurrentQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I20'].value}</div>
-                                """
-            st.markdown(CurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            CurrentQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I21'].value}</div>
-                                """
-            st.markdown(CurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            CurrentQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I22'].value}</div>
-                                """
-            st.markdown(CurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            CurrentQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I23'].value}</div>
-                                """
-            st.markdown(CurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            CurrentQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I24'].value}</div>
-                                """
-            st.markdown(CurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            CurrentQuantity = f"""
-                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I25'].value}</div>
-                                """
-            st.markdown(CurrentQuantity, unsafe_allow_html=True)
+        if new_valueb3 == new_valuef3:
+            LoghmeRailT90Quantity = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(math.ceil((new_valueb2) * ((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4)))*2}</div>
+                    """
+            st.markdown(LoghmeRailT90Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            TractionSheaveDiaDescription = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J1'].value}</div>
-                                                            """
-            st.markdown(TractionSheaveDiaDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            PolesQtyDescription = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J15'].value}</div>
-                                                                        """
-            st.markdown(PolesQtyDescription, unsafe_allow_html=True)
+        if ws1['B3'].value != ws1['F3'].value:
+            LoghmeRailT70Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D3'].value}</div>
+                    """
+            st.markdown(LoghmeRailT70Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J2'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J3'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J4'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J5'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J6'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J7'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J8'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J9'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J10'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J11'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J12'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J13'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            TractionSheaveDiaQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J14'].value}</div>
-                                    """
-            st.markdown(TractionSheaveDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            PolesQtyQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J16'].value}</div>
-                                    """
-            st.markdown(PolesQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            PolesQtyQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J17'].value}</div>
-                                    """
-            st.markdown(PolesQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            PolesQtyQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J18'].value}</div>
-                                    """
-            st.markdown(PolesQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            PolesQtyQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J19'].value}</div>
-                                    """
-            st.markdown(PolesQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            PolesQtyQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J20'].value}</div>
-                                    """
-            st.markdown(PolesQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            PolesQtyQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J21'].value}</div>
-                                    """
-            st.markdown(PolesQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            PolesQtyQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J22'].value}</div>
-                                    """
-            st.markdown(PolesQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            PolesQtyQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J23'].value}</div>
-                                    """
-            st.markdown(PolesQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            PolesQtyQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J24'].value}</div>
-                                    """
-            st.markdown(PolesQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            PolesQtyQuantity = f"""
-                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J25'].value}</div>
-                                    """
-            st.markdown(PolesQtyQuantity, unsafe_allow_html=True)
+        if new_valueb3 != new_valuef3:
+            LoghmeRailT70Quantity = f"""
+                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(math.ceil((new_valueb2) * ((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4)))*2}</div>
+                            """
+            st.markdown(LoghmeRailT70Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            WeightDescription = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K1'].value}</div>
-                                                                """
-            st.markdown(WeightDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            FrequencyDescription = f"""
-                                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K15'].value}</div>
-                                                                            """
-            st.markdown(FrequencyDescription, unsafe_allow_html=True)
+        LoghmeRailT50Description = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['D4'].value}</div>
+                                    """
+        st.markdown(LoghmeRailT50Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            WeightQuantity = f"""
-                                        <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K2'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K3'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K4'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K5'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K6'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K7'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K8'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K9'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K10'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K11'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K12'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K13'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            WeightQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K14'].value}</div>
-                                        """
-            st.markdown(WeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            FrequencyQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K16'].value}</div>
-                                        """
-            st.markdown(FrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            FrequencyQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K17'].value}</div>
-                                        """
-            st.markdown(FrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            FrequencyQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K18'].value}</div>
-                                        """
-            st.markdown(FrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            FrequencyQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K19'].value}</div>
-                                        """
-            st.markdown(FrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            FrequencyQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K20'].value}</div>
-                                        """
-            st.markdown(FrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            FrequencyQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K21'].value}</div>
-                                        """
-            st.markdown(FrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            FrequencyQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K22'].value}</div>
-                                        """
-            st.markdown(FrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            FrequencyQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K23'].value}</div>
-                                        """
-            st.markdown(FrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            FrequencyQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K24'].value}</div>
-                                        """
-            st.markdown(FrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            FrequencyQuantity = f"""
-                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K25'].value}</div>
-                                        """
-            st.markdown(FrequencyQuantity, unsafe_allow_html=True)
+        LoghmeRailT50Quantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(math.ceil((new_valueb2) * ((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4))) * 2}</div>
+                                """
+        st.markdown(LoghmeRailT50Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            SpeedDescription = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L1'].value}</div>
-                                                                    """
-            st.markdown(SpeedDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            DiameterDescription = f"""
-                                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L15'].value}</div>
-                                                                                """
-            st.markdown(DiameterDescription, unsafe_allow_html=True)
+        BracketCabinDescription = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['E2'].value}</div>
+                                        """
+        st.markdown(BracketCabinDescription, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            SpeedQuantity = f"""
-                                            <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L2'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L3'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L4'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L5'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L6'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L7'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L8'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L9'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L10'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L11'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L12'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L13'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            SpeedQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L14'].value}</div>
-                                            """
-            st.markdown(SpeedQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            DiameterQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L16'].value}</div>
-                                            """
-            st.markdown(DiameterQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            DiameterQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L17'].value}</div>
-                                            """
-            st.markdown(DiameterQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            DiameterQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L18'].value}</div>
-                                            """
-            st.markdown(DiameterQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            DiameterQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L19'].value}</div>
-                                            """
-            st.markdown(DiameterQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            DiameterQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L20'].value}</div>
-                                            """
-            st.markdown(DiameterQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            DiameterQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L21'].value}</div>
-                                            """
-            st.markdown(DiameterQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            DiameterQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L22'].value}</div>
-                                            """
-            st.markdown(DiameterQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            DiameterQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L23'].value}</div>
-                                            """
-            st.markdown(DiameterQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            DiameterQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L24'].value}</div>
-                                            """
-            st.markdown(DiameterQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            DiameterQuantity = f"""
-                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L25'].value}</div>
-                                            """
-            st.markdown(DiameterQuantity, unsafe_allow_html=True)
+        BracketCabinQuantity = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(math.ceil((new_valueb2) * ((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4)))}</div>
+                        """
+        st.markdown(BracketCabinQuantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            NominalCurrentDescription = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M1'].value}</div>
-                                                                        """
-            st.markdown(NominalCurrentDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            SheaveRopeQtyDescription = f"""
-                                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M15'].value}</div>
-                                                                                    """
-            st.markdown(SheaveRopeQtyDescription, unsafe_allow_html=True)
+        LeftBracketWazneDescription = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F2'].value}</div>
+                                        """
+        st.markdown(LeftBracketWazneDescription, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M2'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M3'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M4'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M5'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M6'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M7'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M8'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M9'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M10'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M11'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M12'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M13'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            NominalCurrentQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M14'].value}</div>
-                                                """
-            st.markdown(NominalCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            SheaveRopeQtyQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M16'].value}</div>
-                                                """
-            st.markdown(SheaveRopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            SheaveRopeQtyQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M17'].value}</div>
-                                                """
-            st.markdown(SheaveRopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            SheaveRopeQtyQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M18'].value}</div>
-                                                """
-            st.markdown(SheaveRopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            SheaveRopeQtyQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M19'].value}</div>
-                                                """
-            st.markdown(SheaveRopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            SheaveRopeQtyQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M20'].value}</div>
-                                                """
-            st.markdown(SheaveRopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            SheaveRopeQtyQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M21'].value}</div>
-                                                """
-            st.markdown(SheaveRopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            SheaveRopeQtyQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M22'].value}</div>
-                                                """
-            st.markdown(SheaveRopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            SheaveRopeQtyQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M23'].value}</div>
-                                                """
-            st.markdown(SheaveRopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            SheaveRopeQtyQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M24'].value}</div>
-                                                """
-            st.markdown(SheaveRopeQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            SheaveRopeQtyQuantity = f"""
-                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M25'].value}</div>
-                                                """
-            st.markdown(SheaveRopeQtyQuantity, unsafe_allow_html=True)
+        LeftBracketWazneQuantity = f"""
+                       <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(math.ceil((new_valueb2) * (((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) + 2)))}</div>
+                       """
+        st.markdown(LeftBracketWazneQuantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            StartCurrentDescription = f"""
-                                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N1'].value}</div>
-                                                                            """
-            st.markdown(StartCurrentDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            SheaveRopeDiaDescription = f"""
-                                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N15'].value}</div>
-                                                                                        """
-            st.markdown(SheaveRopeDiaDescription, unsafe_allow_html=True)
+        RightBracketWazneDescription = f"""
+                                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['F3'].value}</div>
+                                                """
+        st.markdown(RightBracketWazneDescription, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N2'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N3'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N4'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N5'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N6'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N7'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N8'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N9'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N10'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N11'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N12'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N13'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            StartCurrentQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N14'].value}</div>
-                                                    """
-            st.markdown(StartCurrentQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            SheaveRopeDiaQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N16'].value}</div>
-                                                    """
-            st.markdown(SheaveRopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            SheaveRopeDiaQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N17'].value}</div>
-                                                    """
-            st.markdown(SheaveRopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            SheaveRopeDiaQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N18'].value}</div>
-                                                    """
-            st.markdown(SheaveRopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            SheaveRopeDiaQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N19'].value}</div>
-                                                    """
-            st.markdown(SheaveRopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            SheaveRopeDiaQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N20'].value}</div>
-                                                    """
-            st.markdown(SheaveRopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            SheaveRopeDiaQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N21'].value}</div>
-                                                    """
-            st.markdown(SheaveRopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            SheaveRopeDiaQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N22'].value}</div>
-                                                    """
-            st.markdown(SheaveRopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            SheaveRopeDiaQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N23'].value}</div>
-                                                    """
-            st.markdown(SheaveRopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            SheaveRopeDiaQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N24'].value}</div>
-                                                    """
-            st.markdown(SheaveRopeDiaQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            SheaveRopeDiaQuantity = f"""
-                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N25'].value}</div>
-                                                    """
-            st.markdown(SheaveRopeDiaQuantity, unsafe_allow_html=True)
+        RightBracketWazneQuantity = f"""
+                               <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(math.ceil((new_valueb2) * (((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) + 2)))}</div>
+                               """
+        st.markdown(RightBracketWazneQuantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            CosPhiDescription = f"""
-                                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O1'].value}</div>
-                                                                                """
-            st.markdown(CosPhiDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            BetaAngleDescription = f"""
-                                                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O15'].value}</div>
-                                                                                            """
-            st.markdown(BetaAngleDescription, unsafe_allow_html=True)
+        Pitch10Description = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G2'].value}</div>
+                                        """
+        st.markdown(Pitch10Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O2'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O3'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O4'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O5'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O6'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O7'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O8'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O9'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O10'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O11'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O12'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O13'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            CosPhiQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O14'].value}</div>
-                                                        """
-            st.markdown(CosPhiQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            BetaAngleQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O16'].value}</div>
-                                                        """
-            st.markdown(BetaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            BetaAngleQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O17'].value}</div>
-                                                        """
-            st.markdown(BetaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            BetaAngleQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O18'].value}</div>
-                                                        """
-            st.markdown(BetaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            BetaAngleQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O19'].value}</div>
-                                                        """
-            st.markdown(BetaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            BetaAngleQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O20'].value}</div>
-                                                        """
-            st.markdown(BetaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            BetaAngleQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O21'].value}</div>
-                                                        """
-            st.markdown(BetaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            BetaAngleQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O22'].value}</div>
-                                                        """
-            st.markdown(BetaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            BetaAngleQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O23'].value}</div>
-                                                        """
-            st.markdown(BetaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            BetaAngleQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O24'].value}</div>
-                                                        """
-            st.markdown(BetaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            BetaAngleQuantity = f"""
-                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O25'].value}</div>
-                                                        """
-            st.markdown(BetaAngleQuantity, unsafe_allow_html=True)
+        LeftBracketWazneQuant = math.ceil((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) + 2))
+        # LoghmeRailT50Quant = int(math.ceil(((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4))) * 2
+        # Pitch10Quantity = f"""
+        #                 <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(2 * int(LeftBracketWazneQuant) + LoghmeRailT50Quant)}</div>
+        #                 """
+        # st.markdown(Pitch10Quantity, unsafe_allow_html=True)
+        # LoghmeRailT50Quant = int(math.ceil(((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4))) * 2
+        Pitch10Quantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(2 * int(LeftBracketWazneQuant))}</div>
+                                """
+        st.markdown(Pitch10Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            MotorFrequencyDescription = f"""
-                                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P1'].value}</div>
-                                                                                    """
-            st.markdown(MotorFrequencyDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            GamaAngleDescription = f"""
-                                                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P15'].value}</div>
-                                                                                                """
-            st.markdown(GamaAngleDescription, unsafe_allow_html=True)
+        if ws1['B3'].value != ws1['F3'].value:
+            Pitch12Description = f"""
+                                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G3'].value}</div>
+                                                    """
+            st.markdown(Pitch12Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P2'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P3'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P4'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P5'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P6'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P7'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P8'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P9'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P10'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P11'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P12'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P13'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            MotorFrequencyQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P14'].value}</div>
-                                                            """
-            st.markdown(MotorFrequencyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            GamaAngleQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P16'].value}</div>
-                                                            """
-            st.markdown(GamaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            GamaAngleQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P17'].value}</div>
-                                                            """
-            st.markdown(GamaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            GamaAngleQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P18'].value}</div>
-                                                            """
-            st.markdown(GamaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            GamaAngleQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P19'].value}</div>
-                                                            """
-            st.markdown(GamaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            GamaAngleQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P20'].value}</div>
-                                                            """
-            st.markdown(GamaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            GamaAngleQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P21'].value}</div>
-                                                            """
-            st.markdown(GamaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            GamaAngleQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P22'].value}</div>
-                                                            """
-            st.markdown(GamaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            GamaAngleQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P23'].value}</div>
-                                                            """
-            st.markdown(GamaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            GamaAngleQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P24'].value}</div>
-                                                            """
-            st.markdown(GamaAngleQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            GamaAngleQuantity = f"""
-                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P25'].value}</div>
-                                                            """
-            st.markdown(GamaAngleQuantity, unsafe_allow_html=True)
+        if new_valueb3 != new_valuef3:
+            BracketCabinQuant = int(math.ceil(((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4)))
+            # LoghmeRailT70Quant = int(math.ceil(((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4))) * 2
+            # Pitch12Quantity = f"""
+            #                         <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(2 * int(BracketCabinQuant) + LoghmeRailT70Quant)}</div>
+            #                         """
+            # st.markdown(Pitch12Quantity, unsafe_allow_html=True)
+            # LoghmeRailT70Quant = int(math.ceil(((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4))) * 2
+            Pitch12Quantity = f"""
+                                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(2 * int(BracketCabinQuant))}</div>
+                                                """
+            st.markdown(Pitch12Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            MotorVoltageDescription = f"""
-                                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q1'].value}</div>
-                                                                                        """
-            st.markdown(MotorVoltageDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            GroovePitchDescription = f"""
-                                                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q15'].value}</div>
-                                                                                                    """
-            st.markdown(GroovePitchDescription, unsafe_allow_html=True)
+        Pitch8Description = f"""
+                                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['G4'].value}</div>
+                                                """
+        st.markdown(Pitch8Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q2'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q3'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q4'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q5'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q6'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q7'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q8'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q9'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q10'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q11'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q12'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q13'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            MotorVoltageQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q14'].value}</div>
-                                                                """
-            st.markdown(MotorVoltageQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            GroovePitchQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q16'].value}</div>
-                                                                """
-            st.markdown(GroovePitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            GroovePitchQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q17'].value}</div>
-                                                                """
-            st.markdown(GroovePitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            GroovePitchQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q18'].value}</div>
-                                                                """
-            st.markdown(GroovePitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            GroovePitchQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q19'].value}</div>
-                                                                """
-            st.markdown(GroovePitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            GroovePitchQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q20'].value}</div>
-                                                                """
-            st.markdown(GroovePitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            GroovePitchQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q21'].value}</div>
-                                                                """
-            st.markdown(GroovePitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            GroovePitchQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q22'].value}</div>
-                                                                """
-            st.markdown(GroovePitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            GroovePitchQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q23'].value}</div>
-                                                                """
-            st.markdown(GroovePitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            GroovePitchQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q24'].value}</div>
-                                                                """
-            st.markdown(GroovePitchQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            GroovePitchQuantity = f"""
-                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q25'].value}</div>
-                                                                """
-            st.markdown(GroovePitchQuantity, unsafe_allow_html=True)
+        LeftBracketWazneQuant = math.ceil((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) + 2))
+        # LoghmeRailT50Quant = int(math.ceil(((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4))) * 2
+        # Pitch8Quantity = f"""
+        #                         <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(2 * int(LeftBracketWazneQuant) + LoghmeRailT50Quant)}</div>
+        #                         """
+        # st.markdown(Pitch8Quantity, unsafe_allow_html=True)
+        # LoghmeRailT50Quant = int(math.ceil(((((new_valueb8 + new_valueb9 + new_valueb10) / 1.7) * 2) + 4))) * 2
+        Pitch8Quantity = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(2 * int(LeftBracketWazneQuant))}</div>
+                                        """
+        st.markdown(Pitch8Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            PoleQtyDescription = f"""
-                                                                                            <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R1'].value}</div>
-                                                                                            """
-            st.markdown(PoleQtyDescription, unsafe_allow_html=True)
-        elif ws1['B2'].value == ws1['D2'].value:
-            MotorWeightDescription = f"""
-                                                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R15'].value}</div>
-                                                                                                        """
-            st.markdown(MotorWeightDescription, unsafe_allow_html=True)
+        LasticDescription = f"""
+                                   <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['H2'].value}</div>
+                                   """
+        st.markdown(LasticDescription, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R2'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R3'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R4'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R5'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R6'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R7'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R8'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R9'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R10'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R11'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R12'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R13'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            PoleQtyQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R14'].value}</div>
-                                                                    """
-            st.markdown(PoleQtyQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A16'].value:
-            MotorWeightQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R16'].value}</div>
-                                                                    """
-            st.markdown(MotorWeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A17'].value:
-            MotorWeightQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R17'].value}</div>
-                                                                    """
-            st.markdown(MotorWeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A18'].value:
-            MotorWeightQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R18'].value}</div>
-                                                                    """
-            st.markdown(MotorWeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A19'].value:
-            MotorWeightQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R19'].value}</div>
-                                                                    """
-            st.markdown(MotorWeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A20'].value:
-            MotorWeightQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R20'].value}</div>
-                                                                    """
-            st.markdown(MotorWeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A21'].value:
-            MotorWeightQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R21'].value}</div>
-                                                                    """
-            st.markdown(MotorWeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A22'].value:
-            MotorWeightQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R22'].value}</div>
-                                                                    """
-            st.markdown(MotorWeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A23'].value:
-            MotorWeightQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R23'].value}</div>
-                                                                    """
-            st.markdown(MotorWeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A24'].value:
-            MotorWeightQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R24'].value}</div>
-                                                                    """
-            st.markdown(MotorWeightQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A25'].value:
-            MotorWeightQuantity = f"""
-                                                                    <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R25'].value}</div>
-                                                                    """
-            st.markdown(MotorWeightQuantity, unsafe_allow_html=True)
+        LasticQuantity = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 4}</div>
+                                        """
+        st.markdown(LasticQuantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
-        if ws1['B2'].value == ws1['C2'].value:
-            EdDescription = f"""
-                                                                                                <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S1'].value}</div>
-                                                                                                """
-            st.markdown(EdDescription, unsafe_allow_html=True)
+        if ws1['B3'].value == ws1['C3'].value or ws1['B3'].value == ws1['D3'].value:
+            SimBoxelScore10Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I2'].value}</div>
+                    """
+            st.markdown(SimBoxelScore10Description, unsafe_allow_html=True)
     with cols[1]:
-        if ws2['A1'].value == ws2['A2'].value:
-            EdQuantity = f"""
-                                                                        <div  style='display:flex;flex-wrap:wrap;background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S2'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A3'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S3'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A4'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S4'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A5'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S5'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A6'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S6'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A7'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S7'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A8'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S8'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A9'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S9'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A10'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S10'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A11'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S11'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A12'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S12'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A13'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S13'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
-        elif ws2['A1'].value == ws2['A14'].value:
-            EdQuantity = f"""
-                                                                        <div  style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S14'].value}</div>
-                                                                        """
-            st.markdown(EdQuantity, unsafe_allow_html=True)
+        if new_valueb3 == new_valuec3:
+            # SimBoxelScore10Quantity = f"""
+            # <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2))*int(round((new_valueb8 + new_valueb9 + 5) * 4))}</div>
+            # """
+            # st.markdown(SimBoxelScore10Quantity, unsafe_allow_html=True)
+            SimBoxelScore10Quantity = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 4))}</div>
+                        """
+            st.markdown(SimBoxelScore10Quantity, unsafe_allow_html=True)
+        elif new_valueb3 == new_valued3:
+            SimBoxelScore10Quantity = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 5))}</div>
+                                    """
+            st.markdown(SimBoxelScore10Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['D3'].value:
+            SimBoxelScore11Description = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I5'].value}</div>
+                        """
+            st.markdown(SimBoxelScore11Description, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb3 == new_valued3:
+            SimBoxelScore11Quantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 6))}</div>
+                """
+            st.markdown(SimBoxelScore11Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['E3'].value or ws1['B3'].value == ws1['F3'].value:
+            SimBoxelScore12Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I3'].value}</div>
+                    """
+            st.markdown(SimBoxelScore12Description, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb3 == new_valuee3 or new_valueb3 == new_valuef3:
+            SimBoxelScore12Quantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 6))}</div>
+            """
+            st.markdown(SimBoxelScore12Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        SimBoxelScore6Description = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I4'].value}</div>
+                                    """
+        st.markdown(SimBoxelScore6Description, unsafe_allow_html=True)
+    with cols[1]:
+        SimBoxelScore6Quantity = f"""
+                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(math.ceil((new_valueb10 * 2) + 1))}</div>
+                            """
+        st.markdown(SimBoxelScore6Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['C3'].value or ws1['B3'].value == ws1['D3'].value:
+            GholabBoxelScore10Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J2'].value}</div>
+                    """
+            st.markdown(GholabBoxelScore10Description, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb3 == new_valuec3:
+            GholabBoxelScore10Quantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * 8}</div>
+            """
+            st.markdown(GholabBoxelScore10Quantity, unsafe_allow_html=True)
+        if new_valueb3 == new_valued3:
+            GholabBoxelScore10Quantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * 10}</div>
+            """
+            st.markdown(GholabBoxelScore10Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['E3'].value or ws1['B3'].value == ws1['F3'].value:
+            GholabBoxelScore13Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['J3'].value}</div>
+                    """
+            st.markdown(GholabBoxelScore13Description, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb3 == new_valuee3 or new_valueb3 == new_valuef3:
+            GholabBoxelScore13Quantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * 10}</div>
+            """
+            st.markdown(GholabBoxelScore13Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['C3'].value:
+            FalakeHarzgard404Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K2'].value}</div>
+                    """
+            st.markdown(FalakeHarzgard404Description, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb3 == new_valuec3:
+            FalakeHarzgard404Quantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(FalakeHarzgard404Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['D3'].value:
+            FalakeHarzgard405Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K3'].value}</div>
+                    """
+            st.markdown(FalakeHarzgard405Description, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb3 == new_valued3:
+            FalakeHarzgard405Quantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(FalakeHarzgard405Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['E3'].value or ws1['B3'].value == ws1['F3'].value:
+            FalakeHarzgard485Description = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['K4'].value}</div>
+                    """
+            st.markdown(FalakeHarzgard485Description, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb3 == new_valuee3 or new_valueb3 == new_valuef3:
+            FalakeHarzgard485Quantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(FalakeHarzgard485Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        GovernorUpDescription = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L2'].value}</div>
+                        """
+        st.markdown(GovernorUpDescription, unsafe_allow_html=True)
+    with cols[1]:
+        GovernorUpQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                """
+        st.markdown(GovernorUpQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        GovernorDownDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['L3'].value}</div>
+                                """
+        st.markdown(GovernorDownDescription, unsafe_allow_html=True)
+    with cols[1]:
+        GovernorDownQuantity = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                        """
+        st.markdown(GovernorDownQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B11'].value == ws1['D11'].value and ws1['B13'].value == ws1['C13'].value:
+            LeftDoorGhoflDescription = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M2'].value}</div>
+                                    """
+            st.markdown(LeftDoorGhoflDescription, unsafe_allow_html=True)
+        elif ws1['B11'].value == ws1['D11'].value and ws1['B13'].value == ws1['D13'].value:
+            RightDoorGhoflDescription = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['M3'].value}</div>
+                                    """
+            st.markdown(RightDoorGhoflDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb11 == new_valued11 and new_valueb13 == new_valuec13:
+            LeftDoorGhoflQuantity = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{int(new_valueb2 * new_valueb6)}</div>
+                                    """
+            st.markdown(LeftDoorGhoflQuantity, unsafe_allow_html=True)
+        elif new_valueb11 == new_valued11 and new_valueb13 == new_valued13:
+            RightDoorGhoflQuantity = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{int(new_valueb2 * new_valueb6)}</div>
+                                    """
+            st.markdown(RightDoorGhoflQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B11'].value == ws1['D11'].value and ws1['B13'].value == ws1['C13'].value:
+            DictatorDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N2'].value}</div>
+                                """
+            st.markdown(DictatorDescription, unsafe_allow_html=True)
+        elif ws1['B11'].value == ws1['D11'].value and ws1['B13'].value == ws1['D13'].value:
+            DictatorDescription = f"""
+                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['N2'].value}</div>
+                                            """
+            st.markdown(DictatorDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb11 == new_valued11 and new_valueb13 == new_valuec13:
+            DictatorQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{int(new_valueb2 * new_valueb6)}</div>
+                                """
+            st.markdown(DictatorQuantity, unsafe_allow_html=True)
+        elif new_valueb11 == new_valued11 and new_valueb13 == new_valued13:
+            DictatorQuantity = f"""
+                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{int(new_valueb2 * new_valueb6)}</div>
+                                            """
+            st.markdown(DictatorQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        DoorKeyDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['O2'].value}</div>
+                                """
+        st.markdown(DoorKeyDescription, unsafe_allow_html=True)
+    with cols[1]:
+        DoorKeyQuantity = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                        """
+        st.markdown(DoorKeyQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['C3'].value:
+            PolyortanDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P2'].value}</div>
+                    """
+            st.markdown(PolyortanDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['D3'].value:
+            PolyortanDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['P3'].value}</div>
+                    """
+            st.markdown(PolyortanDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['E3'].value or ws1['B3'].value == ws1['F3'].value:
+            BufferDescription = f"""
+                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Q2'].value}</div>
+                            """
+            st.markdown(BufferDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb3 == new_valuec3:
+            PolyortanQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+            """
+            st.markdown(PolyortanQuantity, unsafe_allow_html=True)
+        elif new_valueb3 == new_valued3:
+            PolyortanQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+            """
+            st.markdown(PolyortanQuantity, unsafe_allow_html=True)
+        elif new_valueb3 == new_valuee3 or new_valueb3 == new_valuef3:
+            BufferQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+            """
+            st.markdown(BufferQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        RoghandanDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['R2'].value}</div>
+                                """
+        st.markdown(RoghandanDescription, unsafe_allow_html=True)
+    with cols[1]:
+        RoghandanQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 4}</div>
+                """
+        st.markdown(RoghandanQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        AshkiDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['S2'].value}</div>
+                                """
+        st.markdown(AshkiDescription, unsafe_allow_html=True)
+    with cols[1]:
+        AshkiQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                """
+        st.markdown(AshkiQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        CorpiScore6Description = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['T2'].value}</div>
+                                """
+        st.markdown(CorpiScore6Description, unsafe_allow_html=True)
+    with cols[1]:
+        SimBoxelScore6Quant = (int(new_valueb2)) * int(math.ceil((new_valueb10 * 2) + 1))
+        CorpiScore6Quantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(SimBoxelScore6Quant) * 4}</div>
+                """
+        st.markdown(CorpiScore6Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['C3'].value:
+            CorpiScore10Description = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['T3'].value}</div>
+                                    """
+            st.markdown(CorpiScore10Description, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['D3'].value:
+            CorpiScore10Description = f"""
+                                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['T3'].value}</div>
+                                                """
+            st.markdown(CorpiScore10Description, unsafe_allow_html=True)
+            CorpiScore11Description = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['T5'].value}</div>
+                                    """
+            st.markdown(CorpiScore11Description, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['E3'].value or ws1['B3'].value == ws1['F3'].value:
+            CorpiScore12Description = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['T4'].value}</div>
+                                    """
+            st.markdown(CorpiScore12Description, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb3 == new_valuec3:
+            SimBoxelScore10Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 4))
+            CorpiScore10Quantity = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(SimBoxelScore10Quant) * 4}</div>
+                    """
+            st.markdown(CorpiScore10Quantity, unsafe_allow_html=True)
+        elif new_valueb3 == new_valued3:
+            SimBoxelScore10Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 5))
+            CorpiScore10Quantity = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(SimBoxelScore10Quant) * 4}</div>
+                    """
+            st.markdown(CorpiScore10Quantity, unsafe_allow_html=True)
+            SimBoxelScore11Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 6))
+            CorpiScore11Quantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(SimBoxelScore11Quant) * 4}</div>
+                                """
+            st.markdown(CorpiScore11Quantity, unsafe_allow_html=True)
+        elif new_valueb3 == new_valuee3 or new_valueb3 == new_valuef3:
+            SimBoxelScore12Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 6))
+            CorpiScore12Quantity = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(SimBoxelScore12Quant) * 4}</div>
+                    """
+            st.markdown(CorpiScore12Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        PitchDescription = f"""
+                                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['U2'].value}</div>
+                                                """
+        st.markdown(PitchDescription, unsafe_allow_html=True)
+    with cols[1]:
+        PitchQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                """
+        st.markdown(PitchQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['C3'].value:
+            TabloFarmanDescription = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['V2'].value}</div>
+                        """
+            st.markdown(TabloFarmanDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['D3'].value:
+            TabloFarmanDescription = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['V3'].value}</div>
+                        """
+            st.markdown(TabloFarmanDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['E3'].value or ws1['B3'].value == ws1['F3'].value:
+            TabloFarmanDescription = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['V4'].value}</div>
+                        """
+            st.markdown(TabloFarmanDescription, unsafe_allow_html=True)
+    with cols[1]:
+        TabloFarmanQuantity = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                    """
+        st.markdown(TabloFarmanQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        TabloBarghDescription = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['W2'].value}</div>
+                                        """
+        st.markdown(TabloBarghDescription, unsafe_allow_html=True)
+    with cols[1]:
+        TabloBarghQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                """
+        st.markdown(TabloBarghQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['C3'].value:
+            UPSDescription = f"""
+                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['X2'].value}</div>
+                            """
+            st.markdown(UPSDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['D3'].value:
+            UPSDescription = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['X3'].value}</div>
+                                        """
+            st.markdown(UPSDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['E3'].value or ws1['B3'].value == ws1['F3'].value:
+            UPSDescription = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['X4'].value}</div>
+                                        """
+            st.markdown(UPSDescription, unsafe_allow_html=True)
+    with cols[1]:
+        UPSQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                """
+        st.markdown(UPSQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        # if ws1['B11'].value == ws1['D11'].value:
+        #     PhotocellDescription = f"""
+        #                     <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Y2'].value}</div>
+        #                     """
+        #     st.markdown(PhotocellDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value:
+            PhotocellDescription = f"""
+                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Y3'].value}</div>
+                            """
+            st.markdown(PhotocellDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb11 == new_valuec11:
+            PhotocellQuantity = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                    """
+            st.markdown(PhotocellQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        CabinDoorShasiDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Z2'].value}</div>
+                                """
+        st.markdown(CabinDoorShasiDescription, unsafe_allow_html=True)
+    with cols[1]:
+        CabinDoorShasiQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                """
+        st.markdown(CabinDoorShasiQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        LandingShasiDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['Z3'].value}</div>
+                                """
+        st.markdown(LandingShasiDescription, unsafe_allow_html=True)
+    with cols[1]:
+        LandingShasiQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2 * new_valueb6)}</div>
+                """
+        st.markdown(LandingShasiQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        TravelCableDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AA2'].value}</div>
+                                """
+        st.markdown(TravelCableDescription, unsafe_allow_html=True)
+    with cols[1]:
+        TravelCableQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(math.ceil(new_valueb8 + 5 + new_valueb9 + 3) + 1)}</div>
+                """
+        st.markdown(TravelCableQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        ElectrosignalDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AB2'].value}</div>
+                                """
+        st.markdown(ElectrosignalDescription, unsafe_allow_html=True)
+    with cols[1]:
+        ElectrosignalQuantity = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                        """
+        st.markdown(ElectrosignalQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        ShalterDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AC2'].value}</div>
+                                """
+        st.markdown(ShalterDescription, unsafe_allow_html=True)
+    with cols[1]:
+        ShalterQuantity = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*2}</div>
+                        """
+        st.markdown(ShalterQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        OverloadDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AD2'].value}</div>
+                                """
+        st.markdown(OverloadDescription, unsafe_allow_html=True)
+    with cols[1]:
+        OverloadQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                                """
+        st.markdown(OverloadQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        TunnelLightDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AE2'].value}</div>
+                                """
+        st.markdown(TunnelLightDescription, unsafe_allow_html=True)
+    with cols[1]:
+        # TunnelLightQuantity = f"""
+        #                         <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2 * new_valueb6 * 2)}</div>
+        #                         """
+        # st.markdown(TunnelLightQuantity, unsafe_allow_html=True)
+        TunnelLightQuantity = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2 * new_valueb6)}</div>
+                                        """
+        st.markdown(TunnelLightQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        Simafshan6Description = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AF2'].value}</div>
+                                """
+        st.markdown(Simafshan6Description, unsafe_allow_html=True)
+    with cols[1]:
+        Simafshan6Quantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(math.ceil(new_valueb8 + new_valueb9 + new_valueb10 + 5))}</div>
+                                     """
+        st.markdown(Simafshan6Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        Simafshan4Description = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AF3'].value}</div>
+                                        """
+        st.markdown(Simafshan4Description, unsafe_allow_html=True)
+    with cols[1]:
+        Simafshan4Quantity = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                                             """
+        st.markdown(Simafshan4Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B6'].value != ws1['C6'].value:
+            SimafshanBlueDescription = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AF4'].value}</div>
+                                    """
+            st.markdown(SimafshanBlueDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb6 == new_valued6:
+            SimafshanBlueQuantity = f"""
+                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                                                 """
+            st.markdown(SimafshanBlueQuantity, unsafe_allow_html=True)
+        elif new_valueb6 != new_valuec6 and new_valueb6 != new_valued6:
+            SimafshanBlueQuantity = f"""
+                                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                                                             """
+            st.markdown(SimafshanBlueQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        SimafshanYellowDescription = f"""
+                                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AF5'].value}</div>
+                                                        """
+        st.markdown(SimafshanYellowDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb6 == new_valuec6 or new_valueb6 == new_valued6 or new_valueb6 == new_valuee6:
+            SimafshanYellowQuantity = f"""
+                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                                                 """
+            st.markdown(SimafshanYellowQuantity, unsafe_allow_html=True)
+        else:
+            SimafshanYellowQuantity = f"""
+                                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                                                             """
+            st.markdown(SimafshanYellowQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        SimafshanGreenDescription = f"""
+                                                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AF6'].value}</div>
+                                                                """
+        st.markdown(SimafshanGreenDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb6 == new_valuec6 or new_valueb6 == new_valued6 or new_valueb6 == new_valuee6 or new_valueb6 == new_valuef6:
+            SimafshanGreenQuantity = f"""
+                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                                                 """
+            st.markdown(SimafshanGreenQuantity, unsafe_allow_html=True)
+        else:
+            SimafshanGreenQuantity = f"""
+                                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                                                             """
+            st.markdown(SimafshanGreenQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        SimafshanRedDescription = f"""
+                                                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AF7'].value}</div>
+                                                                """
+        st.markdown(SimafshanRedDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb6 == new_valuec6 or new_valueb6 == new_valued6 or new_valueb6 == new_valuee6 or new_valueb6 == new_valuef6 or new_valueb6 == new_valueg6:
+            SimafshanRedQuantity = f"""
+                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                                                 """
+            st.markdown(SimafshanRedQuantity, unsafe_allow_html=True)
+        else:
+            SimafshanRedQuantity = f"""
+                                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                                                             """
+            st.markdown(SimafshanRedQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        SimafshanBlackDescription = f"""
+                                                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AF8'].value}</div>
+                                                                """
+        st.markdown(SimafshanBlackDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb6 == new_valuec6 or new_valueb6 == new_valued6 or new_valueb6 == new_valuee6 or new_valueb6 == new_valuef6 or new_valueb6 == new_valueg6 or new_valueb6 == new_valueh6:
+            SimafshanBlackQuantity = f"""
+                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                                                 """
+            st.markdown(SimafshanBlackQuantity, unsafe_allow_html=True)
+        else:
+            SimafshanBlackQuantity = f"""
+                                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                                                             """
+            st.markdown(SimafshanBlackQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        TunnelLightCableDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AG2'].value}</div>
+                                """
+        st.markdown(TunnelLightCableDescription, unsafe_allow_html=True)
+    with cols[1]:
+        TunnelLightCableQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(math.ceil(new_valueb8 + new_valueb9 + new_valueb10 + 5))}</div>
+                                """
+        st.markdown(TunnelLightCableQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        Dockt9Description = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AH2'].value}</div>
+                                """
+        st.markdown(Dockt9Description, unsafe_allow_html=True)
+    with cols[1]:
+        Dockt9Quantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                                """
+        st.markdown(Dockt9Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        Dockt3Description = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AH3'].value}</div>
+                                        """
+        st.markdown(Dockt3Description, unsafe_allow_html=True)
+    with cols[1]:
+        Dockt3Quantity = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(math.ceil(((new_valueb8 + new_valueb9 + new_valueb10) / 2) - 1))}</div>
+                                        """
+        st.markdown(Dockt3Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        Dockt10Description = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AH4'].value}</div>
+                                        """
+        st.markdown(Dockt10Description, unsafe_allow_html=True)
+    with cols[1]:
+        Dockt10Quantity = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                                        """
+        st.markdown(Dockt10Quantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        LoleKhortomiFeleziDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AI2'].value}</div>
+                                """
+        st.markdown(LoleKhortomiFeleziDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb6 == new_valuec6 or new_valueb6 == new_valued6 or new_valueb6 == new_valuee6:
+            LoleKhortomiFeleziQuantity = f"""
+                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                            """
+            st.markdown(LoleKhortomiFeleziQuantity, unsafe_allow_html=True)
+        else:
+            LoleKhortomiFeleziQuantity = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 3}</div>
+                                    """
+            st.markdown(LoleKhortomiFeleziQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        LoleKhortomiPlasticiDescription = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AI3'].value}</div>
+                                        """
+        st.markdown(LoleKhortomiPlasticiDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb6 == new_valuec6 or new_valueb6 == new_valued6 or new_valueb6 == new_valuee6:
+            LoleKhortomiPlasticiQuantity = f"""
+                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                                    """
+            st.markdown(LoleKhortomiPlasticiQuantity, unsafe_allow_html=True)
+        else:
+            LoleKhortomiPlasticiQuantity = f"""
+                                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 3}</div>
+                                            """
+            st.markdown(LoleKhortomiPlasticiQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        PrizRokarDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AJ2'].value}</div>
+                                """
+        st.markdown(PrizRokarDescription, unsafe_allow_html=True)
+    with cols[1]:
+        PrizRokarQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                                """
+        st.markdown(PrizRokarQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        TabdilKeyDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AK2'].value}</div>
+                                """
+        st.markdown(TabdilKeyDescription, unsafe_allow_html=True)
+    with cols[1]:
+        TabdilKeyQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)*2}</div>
+                                """
+        st.markdown(TabdilKeyQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        GharchiKeyDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AL2'].value}</div>
+                                """
+        st.markdown(GharchiKeyDescription, unsafe_allow_html=True)
+    with cols[1]:
+        GharchiKeyQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                                """
+        st.markdown(GharchiKeyQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        GharchiKeyGhabDescription = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AL3'].value}</div>
+                                        """
+        st.markdown(GharchiKeyGhabDescription, unsafe_allow_html=True)
+    with cols[1]:
+        GharchiKeyGhabQuantity = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                                        """
+        st.markdown(GharchiKeyGhabQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        MagnetDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AM2'].value}</div>
+                                """
+        st.markdown(MagnetDescription, unsafe_allow_html=True)
+    with cols[1]:
+        MagnetQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 5}</div>
+                                """
+        st.markdown(MagnetQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        NavarChasbDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AN2'].value}</div>
+                                """
+        st.markdown(NavarChasbDescription, unsafe_allow_html=True)
+    with cols[1]:
+        NavarChasbQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 10}</div>
+                                """
+        st.markdown(NavarChasbQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        BastTravelCableDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AO2'].value}</div>
+                                """
+        st.markdown(BastTravelCableDescription, unsafe_allow_html=True)
+    with cols[1]:
+        BastTravelCableQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 4}</div>
+                                """
+        st.markdown(BastTravelCableQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        BastKamarbandiDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AO3'].value}</div>
+                                """
+        st.markdown(BastKamarbandiDescription, unsafe_allow_html=True)
+    with cols[1]:
+        BastKamarbandiQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                                """
+        st.markdown(BastKamarbandiQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['C12'].value and ws1['B13'].value == ws1['C13'].value:
+            CabinDoorFull70LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP2'].value}</div>
+                    """
+            st.markdown(CabinDoorFull70LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['C12'].value and ws1['B13'].value == ws1['D13'].value:
+            CabinDoorFull70RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP3'].value}</div>
+                    """
+            st.markdown(CabinDoorFull70RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['C12'].value and ws1['B13'].value == ws1['E13'].value:
+            CabinDoorFull70CentralDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP4'].value}</div>
+                    """
+            st.markdown(CabinDoorFull70CentralDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['D12'].value and ws1['B13'].value == ws1['C13'].value:
+            CabinDoorFull80LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP5'].value}</div>
+                    """
+            st.markdown(CabinDoorFull80LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['D12'].value and ws1['B13'].value == ws1['D13'].value:
+            CabinDoorFull80RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP6'].value}</div>
+                    """
+            st.markdown(CabinDoorFull80RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['D12'].value and ws1['B13'].value == ws1['E13'].value:
+            CabinDoorFull80CentralDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP7'].value}</div>
+                    """
+            st.markdown(CabinDoorFull80CentralDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['E12'].value and ws1['B13'].value == ws1['C13'].value:
+            CabinDoorFull90LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP8'].value}</div>
+                    """
+            st.markdown(CabinDoorFull90LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['E12'].value and ws1['B13'].value == ws1['D13'].value:
+            CabinDoorFull90RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP9'].value}</div>
+                    """
+            st.markdown(CabinDoorFull90RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['E12'].value and ws1['B13'].value == ws1['E13'].value:
+            CabinDoorFull90CentralDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP10'].value}</div>
+                    """
+            st.markdown(CabinDoorFull90CentralDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['F12'].value and ws1['B13'].value == ws1['C13'].value:
+            CabinDoorFull100LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP11'].value}</div>
+                    """
+            st.markdown(CabinDoorFull100LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['F12'].value and ws1['B13'].value == ws1['D13'].value:
+            CabinDoorFull100RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP12'].value}</div>
+                    """
+            st.markdown(CabinDoorFull100RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['F12'].value and ws1['B13'].value == ws1['E13'].value:
+            CabinDoorFull100CentralDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP13'].value}</div>
+                    """
+            st.markdown(CabinDoorFull100CentralDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['C12'].value and ws1['B13'].value == ws1['C13'].value:
+            CabinDoorNime70LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP14'].value}</div>
+                    """
+            st.markdown(CabinDoorNime70LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['C12'].value and ws1['B13'].value == ws1['D13'].value:
+            CabinDoorNime70RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP15'].value}</div>
+                    """
+            st.markdown(CabinDoorNime70RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['D12'].value and ws1['B13'].value == ws1['C13'].value:
+            CabinDoorNime80LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP16'].value}</div>
+                    """
+            st.markdown(CabinDoorNime80LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['D12'].value and ws1['B13'].value == ws1['D13'].value:
+            CabinDoorNime80RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP17'].value}</div>
+                    """
+            st.markdown(CabinDoorNime80RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['E12'].value and ws1['B13'].value == ws1['C13'].value:
+            CabinDoorNime90LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP18'].value}</div>
+                    """
+            st.markdown(CabinDoorNime90LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['E12'].value and ws1['B13'].value == ws1['D13'].value:
+            CabinDoorNime90RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AP19'].value}</div>
+                    """
+            st.markdown(CabinDoorNime90RightDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuec12 and new_valueb13 == new_valuec13:
+            CabinDoorFull70LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull70LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuec12 and new_valueb13 == new_valued13:
+            CabinDoorFull70RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull70RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuec12 and new_valueb13 == new_valuee13:
+            CabinDoorFull70CentralQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull70CentralQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valued12 and new_valueb13 == new_valuec13:
+            CabinDoorFull80LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull80LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valued12 and new_valueb13 == new_valued13:
+            CabinDoorFull80RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull80RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valued12 and new_valueb13 == new_valuee13:
+            CabinDoorFull80CentralQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull80CentralQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuee12 and new_valueb13 == new_valuec13:
+            CabinDoorFull90LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull90LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuee12 and new_valueb13 == new_valued13:
+            CabinDoorFull90RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull90RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuee12 and new_valueb13 == new_valuee13:
+            CabinDoorFull90CentralQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull90CentralQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuef12 and new_valueb13 == new_valuec13:
+            CabinDoorFull100LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull100LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuef12 and new_valueb13 == new_valued13:
+            CabinDoorFull100RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull100RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuef12 and new_valueb13 == new_valuee13:
+            CabinDoorFull100CentralQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorFull100CentralQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valuec12 and new_valueb13 == new_valuec13:
+            CabinDoorNime70LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorNime70LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valuec12 and new_valueb13 == new_valued13:
+            CabinDoorNime70RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorNime70RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valued12 and new_valueb13 == new_valuec13:
+            CabinDoorNime80LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorNime80LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valued12 and new_valueb13 == new_valued13:
+            CabinDoorNime80RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorNime80RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valuee12 and new_valueb13 == new_valuec13:
+            CabinDoorNime90LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorNime90LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valuee12 and new_valueb13 == new_valued13:
+            CabinDoorNime90RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+            """
+            st.markdown(CabinDoorNime90RightQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['C12'].value and ws1['B13'].value == ws1['C13'].value:
+            LandingDoorFull70LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ2'].value}</div>
+                    """
+            st.markdown(LandingDoorFull70LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['C12'].value and ws1['B13'].value == ws1['D13'].value:
+            LandingDoorFull70RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ3'].value}</div>
+                    """
+            st.markdown(LandingDoorFull70RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['C12'].value and ws1['B13'].value == ws1['E13'].value:
+            LandingDoorFull70CentralDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ4'].value}</div>
+                    """
+            st.markdown(LandingDoorFull70CentralDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['D12'].value and ws1['B13'].value == ws1['C13'].value:
+            LandingDoorFull80LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ5'].value}</div>
+                    """
+            st.markdown(LandingDoorFull80LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['D12'].value and ws1['B13'].value == ws1['D13'].value:
+            LandingDoorFull80RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ6'].value}</div>
+                    """
+            st.markdown(LandingDoorFull80RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['D12'].value and ws1['B13'].value == ws1['E13'].value:
+            LandingDoorFull80CentralDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ7'].value}</div>
+                    """
+            st.markdown(LandingDoorFull80CentralDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['E12'].value and ws1['B13'].value == ws1['C13'].value:
+            LandingDoorFull90LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ8'].value}</div>
+                    """
+            st.markdown(LandingDoorFull90LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['E12'].value and ws1['B13'].value == ws1['D13'].value:
+            LandingDoorFull90RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ9'].value}</div>
+                    """
+            st.markdown(LandingDoorFull90RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['E12'].value and ws1['B13'].value == ws1['E13'].value:
+            LandingDoorFull90CentralDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ10'].value}</div>
+                    """
+            st.markdown(LandingDoorFull90CentralDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['F12'].value and ws1['B13'].value == ws1['C13'].value:
+            LandingDoorFull100LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ11'].value}</div>
+                    """
+            st.markdown(LandingDoorFull100LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['F12'].value and ws1['B13'].value == ws1['D13'].value:
+            LandingDoorFull100RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ12'].value}</div>
+                    """
+            st.markdown(LandingDoorFull100RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['C11'].value and ws1['B12'].value == ws1['F12'].value and ws1['B13'].value == ws1['E13'].value:
+            LandingDoorFull100CentralDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ13'].value}</div>
+                    """
+            st.markdown(LandingDoorFull100CentralDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['C12'].value and ws1['B13'].value == ws1['C13'].value:
+            LandingDoorNime70LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ14'].value}</div>
+                    """
+            st.markdown(LandingDoorNime70LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['C12'].value and ws1['B13'].value == ws1['D13'].value:
+            LandingDoorNime70RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ15'].value}</div>
+                    """
+            st.markdown(LandingDoorNime70RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['D12'].value and ws1['B13'].value == ws1['C13'].value:
+            LandingDoorNime80LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ16'].value}</div>
+                    """
+            st.markdown(LandingDoorNime80LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['D12'].value and ws1['B13'].value == ws1['D13'].value:
+            LandingDoorNime80RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ17'].value}</div>
+                    """
+            st.markdown(LandingDoorNime80RightDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['E12'].value and ws1['B13'].value == ws1['C13'].value:
+            LandingDoorNime90LeftDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ18'].value}</div>
+                    """
+            st.markdown(LandingDoorNime90LeftDescription, unsafe_allow_html=True)
+        if ws1['B11'].value == ws1['D11'].value and ws1['B12'].value == ws1['E12'].value and ws1['B13'].value == ws1['D13'].value:
+            LandingDoorNime90RightDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AQ19'].value}</div>
+                    """
+            st.markdown(LandingDoorNime90RightDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuec12 and new_valueb13 == new_valuec13:
+            LandingDoorFull70LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull70LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuec12 and new_valueb13 == new_valued13:
+            LandingDoorFull70RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull70RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuec12 and new_valueb13 == new_valuee13:
+            LandingDoorFull70CentralQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull70CentralQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valued12 and new_valueb13 == new_valuec13:
+            LandingDoorFull80LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull80LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valued12 and new_valueb13 == new_valued13:
+            LandingDoorFull80RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull80RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valued12 and new_valueb13 == new_valuee13:
+            LandingDoorFull80CentralQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull80CentralQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuee12 and new_valueb13 == new_valuec13:
+            LandingDoorFull90LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull90LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuee12 and new_valueb13 == new_valued13:
+            LandingDoorFull90RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull90RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuee12 and new_valueb13 == new_valuee13:
+            LandingDoorFull90CentralQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull90CentralQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuef12 and new_valueb13 == new_valuec13:
+            LandingDoorFull100LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull100LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuef12 and new_valueb13 == new_valued13:
+            LandingDoorFull100RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull100RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valuec11 and new_valueb12 == new_valuef12 and new_valueb13 == new_valuee13:
+            LandingDoorFull100CentralQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorFull100CentralQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valuec12 and new_valueb13 == new_valuec13:
+            LandingDoorNime70LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorNime70LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valuec12 and new_valueb13 == new_valued13:
+            LandingDoorNime70RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorNime70RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valued12 and new_valueb13 == new_valuec13:
+            LandingDoorNime80LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorNime80LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valued12 and new_valueb13 == new_valued13:
+            LandingDoorNime80RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorNime80RightQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valuee12 and new_valueb13 == new_valuec13:
+            LandingDoorNime90LeftQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorNime90LeftQuantity, unsafe_allow_html=True)
+        if new_valueb11 == new_valued11 and new_valueb12 == new_valuee12 and new_valueb13 == new_valued13:
+            LandingDoorNime90RightQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb6)}</div>
+            """
+            st.markdown(LandingDoorNime90RightQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B3'].value == ws1['C3'].value:
+            ShasiDescription = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AR2'].value}</div>
+            """
+            st.markdown(ShasiDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['D3'].value:
+            ShasiDescription = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AR3'].value}</div>
+            """
+            st.markdown(ShasiDescription, unsafe_allow_html=True)
+        elif ws1['B3'].value == ws1['E3'].value or ws1['B3'].value == ws1['F3'].value:
+            ShasiDescription = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AR4'].value}</div>
+            """
+            st.markdown(ShasiDescription, unsafe_allow_html=True)
+    with cols[1]:
+        ShasiQuantity = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                        """
+        st.markdown(ShasiQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        if ws1['B14'].value == ws1['C14'].value and ws1['B3'].value == ws1['C3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS2'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['C14'].value and ws1['B3'].value == ws1['D3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS2'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['C14'].value and ws1['B3'].value == ws1['E3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS3'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['C14'].value and ws1['B3'].value == ws1['F3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS3'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['D14'].value and ws1['B3'].value == ws1['C3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS4'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['D14'].value and ws1['B3'].value == ws1['D3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS4'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['D14'].value and ws1['B3'].value == ws1['E3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS5'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['D14'].value and ws1['B3'].value == ws1['F3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS5'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['E14'].value and ws1['B3'].value == ws1['C3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS6'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['E14'].value and ws1['B3'].value == ws1['D3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS6'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['E14'].value and ws1['B3'].value == ws1['E3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS7'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+        elif ws1['B14'].value == ws1['E14'].value and ws1['B3'].value == ws1['F3'].value:
+            WazneTadolDescription = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AS7'].value}</div>
+                    """
+            st.markdown(WazneTadolDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb14 == new_valuec14 and new_valueb3 == new_valuec3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 15}</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valuec14 and new_valueb3 == new_valued3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 20}</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuee3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 1200}(KG)</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuef3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 1700}(KG)</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valued14 and new_valueb3 == new_valuec3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 15}</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valued14 and new_valueb3 == new_valued3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 20}</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valued14 and new_valueb3 == new_valuee3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 1200}(KG)</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valued14 and new_valueb3 == new_valuef3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 1700}(KG)</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuec3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 15}</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valuee14 and new_valueb3 == new_valued3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 20}</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuee3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 1200}(KG)</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+        elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuef3:
+            WazneTadolQuantity = f"""
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 1700}(KG)</div>
+            """
+            st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        HefazFalakeMotorDescription = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AT2'].value}</div>
+                        """
+        st.markdown(HefazFalakeMotorDescription, unsafe_allow_html=True)
+    with cols[1]:
+        HefazFalakeMotorQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                """
+        st.markdown(HefazFalakeMotorQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        HefazGovernorDescription = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AT3'].value}</div>
+                        """
+        st.markdown(HefazGovernorDescription, unsafe_allow_html=True)
+    with cols[1]:
+        HefazGovernorQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                """
+        st.markdown(HefazGovernorQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        HefazFalakeHarzgardDescription = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AT4'].value}</div>
+                        """
+        st.markdown(HefazFalakeHarzgardDescription, unsafe_allow_html=True)
+    with cols[1]:
+        HefazFalakeHarzgardQuantity = f"""
+                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                """
+        st.markdown(HefazFalakeHarzgardQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        PhoneDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AU2'].value}</div>
+                                """
+        st.markdown(PhoneDescription, unsafe_allow_html=True)
+    with cols[1]:
+        PhoneQuantity = f"""
+                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                        """
+        st.markdown(PhoneQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        BatteryDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AV2'].value}</div>
+                                """
+        st.markdown(BatteryDescription, unsafe_allow_html=True)
+    with cols[1]:
+        if new_valueb3 == new_valuec3 or new_valueb3 == new_valued3:
+            BatteryQuantity = f"""
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 2}</div>
+                    """
+            st.markdown(BatteryQuantity, unsafe_allow_html=True)
+        else:
+            BatteryQuantity = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * 3}</div>
+                                """
+            st.markdown(BatteryQuantity, unsafe_allow_html=True)
+    cols = st.columns(2)
+    with cols[0]:
+        AghlamStandardDescription = f"""
+                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['AW2'].value}</div>
+                                """
+        st.markdown(AghlamStandardDescription, unsafe_allow_html=True)
+    with cols[1]:
+        AghlamStandardQuantity = f"""
+                                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2)}</div>
+                                        """
+        st.markdown(AghlamStandardQuantity, unsafe_allow_html=True)
+
+
+
+
+
 
 
 
