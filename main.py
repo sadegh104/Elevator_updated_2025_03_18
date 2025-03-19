@@ -205,6 +205,53 @@ with cols[2]:
                     cellb13.value = celld13.value
 
 cols = st.columns(3)
+with cols[0]:
+    sheet_names = wb.sheetnames
+    for sheet_name in sheet_names:
+        if sheet_name == 'Data (1)':
+            ws = wb[sheet_name]
+            cellb3 = ws['B3']
+            cellc3 = ws['C3']
+            celld3 = ws['D3']
+            celle3 = ws['E3']
+            cellf3 = ws['F3']
+            cellg3 = ws['G3']
+            cellh3 = ws['H3']
+            celli3 = ws['I3']
+            cellj3 = ws['J3']
+            cellk3 = ws['K3']
+            celll3 = ws['L3']
+            cellb16 = ws['B16']
+            if cellb3.value == cellc3.value: 
+                new_valueb16 = st.number_input('وزن کابین (کیلوگرم)',
+                                          key=f'{cellb16.coordinate}_{sheet_name}', value=400)
+            elif cellb3.value == celld3.value: 
+                new_valueb16 = st.number_input('وزن کابین (کیلوگرم)',
+                                          key=f'{cellb16.coordinate}_{sheet_name}', value=450)
+            elif cellb3.value == celle3.value: 
+                new_valueb16 = st.number_input('وزن کابین (کیلوگرم)',
+                                          key=f'{cellb16.coordinate}_{sheet_name}', value=500)
+            elif cellb3.value == cellf3.value: 
+                new_valueb16 = st.number_input('وزن کابین (کیلوگرم)',
+                                          key=f'{cellb16.coordinate}_{sheet_name}', value=550)
+            elif cellb3.value == cellg3.value: 
+                new_valueb16 = st.number_input('وزن کابین (کیلوگرم)',
+                                          key=f'{cellb16.coordinate}_{sheet_name}', value=600)
+            elif cellb3.value == cellh3.value: 
+                new_valueb16 = st.number_input('وزن کابین (کیلوگرم)',
+                                          key=f'{cellb16.coordinate}_{sheet_name}', value=675)
+            elif cellb3.value == celli3.value: 
+                new_valueb16 = st.number_input('وزن کابین (کیلوگرم)',
+                                          key=f'{cellb16.coordinate}_{sheet_name}', value=750)
+            elif cellb3.value == cellj3.value: 
+                new_valueb16 = st.number_input('وزن کابین (کیلوگرم)',
+                                          key=f'{cellb16.coordinate}_{sheet_name}', value=800)
+            elif cellb3.value == cellk3.value: 
+                new_valueb16 = st.number_input('وزن کابین (کیلوگرم)',
+                                          key=f'{cellb16.coordinate}_{sheet_name}', value=850)
+            elif cellb3.value == celll3.value: 
+                new_valueb16 = st.number_input('وزن کابین (کیلوگرم)',
+                                          key=f'{cellb16.coordinate}_{sheet_name}', value=900)
 with cols[1]:
     cellb11 = ws['B11']
     cellc11 = ws['C11']
@@ -235,6 +282,53 @@ with cols[1]:
             cellb12.value = celld12.value
         elif new_valueb12 == celle12.value:
             cellb12.value = celle12.value
+with cols[2]:
+    sheet_names = wb.sheetnames
+    for sheet_name in sheet_names:
+        if sheet_name == 'Data (1)':
+            ws = wb[sheet_name]
+            cellb3 = ws['B3']
+            cellc3 = ws['C3']
+            celld3 = ws['D3']
+            celle3 = ws['E3']
+            cellf3 = ws['F3']
+            cellg3 = ws['G3']
+            cellh3 = ws['H3']
+            celli3 = ws['I3']
+            cellj3 = ws['J3']
+            cellk3 = ws['K3']
+            celll3 = ws['L3']
+            cellb17 = ws['B17']
+            if cellb3.value == cellc3.value: 
+                new_valueb17 = st.number_input('تعداد شیار فلکه موتور',
+                                          key=f'{cellb17.coordinate}_{sheet_name}', value=5)
+            elif cellb3.value == celld3.value: 
+                new_valueb17 = st.number_input('تعداد شیار فلکه موتور',
+                                          key=f'{cellb17.coordinate}_{sheet_name}', value=5)
+            elif cellb3.value == celle3.value: 
+                new_valueb17 = st.number_input('تعداد شیار فلکه موتور',
+                                          key=f'{cellb17.coordinate}_{sheet_name}', value=5)
+            elif cellb3.value == cellf3.value: 
+                new_valueb17 = st.number_input('تعداد شیار فلکه موتور',
+                                          key=f'{cellb17.coordinate}_{sheet_name}', value=5)
+            elif cellb3.value == cellg3.value: 
+                new_valueb17 = st.number_input('تعداد شیار فلکه موتور',
+                                          key=f'{cellb17.coordinate}_{sheet_name}', value=5)
+            elif cellb3.value == cellh3.value: 
+                new_valueb17 = st.number_input('تعداد شیار فلکه موتور',
+                                          key=f'{cellb17.coordinate}_{sheet_name}', value=6)
+            elif cellb3.value == celli3.value: 
+                new_valueb17 = st.number_input('تعداد شیار فلکه موتور',
+                                          key=f'{cellb17.coordinate}_{sheet_name}', value=6)
+            elif cellb3.value == cellj3.value: 
+                new_valueb17 = st.number_input('تعداد شیار فلکه موتور',
+                                          key=f'{cellb17.coordinate}_{sheet_name}', value=6)
+            elif cellb3.value == cellk3.value: 
+                new_valueb17 = st.number_input('تعداد شیار فلکه موتور',
+                                          key=f'{cellb17.coordinate}_{sheet_name}', value=6)
+            elif cellb3.value == celll3.value: 
+                new_valueb17 = st.number_input('تعداد شیار فلکه موتور',
+                                          key=f'{cellb17.coordinate}_{sheet_name}', value=6)
 
 
 if st.button('ثبت'):
@@ -627,18 +721,18 @@ if st.button('ثبت'):
                                     """
             st.markdown(SimBoxelScore10Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
-    with cols[0]:
-        if ws1['B3'].value == ws1['F3'].value or ws1['B3'].value == ws1['G3'].value:
-            SimBoxelScore11Description = f"""
-                        <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I5'].value}</div>
-                        """
-            st.markdown(SimBoxelScore11Description, unsafe_allow_html=True)
-    with cols[1]:
-        if new_valueb3 == new_valuef3 or new_valueb3 == new_valueg3:
-            SimBoxelScore11Quantity = f"""
-                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 6))}</div>
-                """
-            st.markdown(SimBoxelScore11Quantity, unsafe_allow_html=True)
+    # with cols[0]:
+    #     if ws1['B3'].value == ws1['F3'].value or ws1['B3'].value == ws1['G3'].value:
+    #         SimBoxelScore11Description = f"""
+    #                     <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['I5'].value}</div>
+    #                     """
+    #         st.markdown(SimBoxelScore11Description, unsafe_allow_html=True)
+    # with cols[1]:
+    #     if new_valueb3 == new_valuef3 or new_valueb3 == new_valueg3:
+    #         SimBoxelScore11Quantity = f"""
+    #             <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 6))}</div>
+    #             """
+    #         st.markdown(SimBoxelScore11Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
     with cols[0]:
         if ws1['B3'].value == ws1['H3'].value or ws1['B3'].value == ws1['I3'].value or ws1['B3'].value == ws1['J3'].value or ws1['B3'].value == ws1['K3'].value or ws1['B3'].value == ws1['L3'].value:
@@ -660,7 +754,7 @@ if st.button('ثبت'):
         st.markdown(SimBoxelScore6Description, unsafe_allow_html=True)
     with cols[1]:
         SimBoxelScore6Quantity = f"""
-                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(math.ceil((new_valueb10 + new_valueb9) + ((new_valueb6 - 1) * 3.4) + 2))}</div>
+                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(math.ceil((new_valueb10 + new_valueb9) + ((new_valueb6 - 1) * 3.4) + 2)) * 2}</div>
                             """
         st.markdown(SimBoxelScore6Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
@@ -890,10 +984,10 @@ if st.button('ثبت'):
                                                 <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['T3'].value}</div>
                                                 """
             st.markdown(CorpiScore10Description, unsafe_allow_html=True)
-            CorpiScore11Description = f"""
-                                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['T5'].value}</div>
-                                    """
-            st.markdown(CorpiScore11Description, unsafe_allow_html=True)
+            # CorpiScore11Description = f"""
+            #                         <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['T5'].value}</div>
+            #                         """
+            # st.markdown(CorpiScore11Description, unsafe_allow_html=True)
         elif ws1['B3'].value == ws1['H3'].value or ws1['B3'].value == ws1['I3'].value or ws1['B3'].value == ws1['J3'].value or ws1['B3'].value == ws1['K3'].value or ws1['B3'].value == ws1['L3'].value:
             CorpiScore12Description = f"""
                                     <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;direction:rtl;'>{ws2['T4'].value}</div>
@@ -901,26 +995,26 @@ if st.button('ثبت'):
             st.markdown(CorpiScore12Description, unsafe_allow_html=True)
     with cols[1]:
         if new_valueb3 == new_valuec3 or new_valueb3 == new_valued3 or new_valueb3 == new_valuee3:
-            SimBoxelScore10Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 4))
+            # SimBoxelScore10Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 4))
             CorpiScore10Quantity = f"""
-                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(SimBoxelScore10Quant) * 4}</div>
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) *int((new_valueb17) * 8)}</div>
                     """
             st.markdown(CorpiScore10Quantity, unsafe_allow_html=True)
         elif new_valueb3 == new_valuef3 or new_valueb3 == new_valueg3:
-            SimBoxelScore10Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 5))
+            # SimBoxelScore10Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 5))
             CorpiScore10Quantity = f"""
-                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(SimBoxelScore10Quant) * 4}</div>
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) *int((new_valueb17) * 8)}</div>
                     """
             st.markdown(CorpiScore10Quantity, unsafe_allow_html=True)
-            SimBoxelScore11Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 6))
-            CorpiScore11Quantity = f"""
-                                <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(SimBoxelScore11Quant) * 4}</div>
-                                """
+            # SimBoxelScore11Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 6))
+            # CorpiScore11Quantity = f"""
+            #                     <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(SimBoxelScore11Quant) * 4}</div>
+            #                     """
             st.markdown(CorpiScore11Quantity, unsafe_allow_html=True)
         elif new_valueb3 == new_valueh3 or new_valueb3 == new_valuei3 or new_valueb3 == new_valuej3 or new_valueb3 == new_valuek3 or new_valueb3 == new_valuel3:
-            SimBoxelScore12Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 6))
+            # SimBoxelScore12Quant = (int(new_valueb2)) * int(round(((new_valueb8 + 9) - 2) * 6))
             CorpiScore12Quantity = f"""
-                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(SimBoxelScore12Quant) * 4}</div>
+                    <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) *int((new_valueb17) * 8)}</div>
                     """
             st.markdown(CorpiScore12Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
@@ -1815,152 +1909,152 @@ if st.button('ثبت'):
     with cols[1]:
         if new_valueb14 == new_valuec14 and new_valueb3 == new_valuec3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(300 + (0.5 * 75 * new_valuec3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuec3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valued3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(375 + (0.5 * 75 * new_valued3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valued3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuee3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(450 + (0.5 * 75 * new_valuee3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuee3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuef3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(525 + (0.5 * 75 * new_valuef3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuef3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valueg3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(600 + (0.5 * 75 * new_valueg3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valueg3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valueh3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(675 + (0.5 * 75 * new_valueh3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valueh3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuei3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(750 + (0.5 * 75 * new_valuei3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuei3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuej3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(825 + (0.5 * 75 * new_valuej3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuej3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuek3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(900 + (0.5 * 75 * new_valuek3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuek3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuel3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(975 + (0.5 * 75 * new_valuel3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuel3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuec3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(300 + (0.5 * 75 * new_valuec3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuec3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valued3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(375 + (0.5 * 75 * new_valued3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valued3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuee3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(450 + (0.5 * 75 * new_valuee3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuee3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuef3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(525 + (0.5 * 75 * new_valuef3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuef3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valueg3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(600 + (0.5 * 75 * new_valueg3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valueg3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valueh3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(675 + (0.5 * 75 * new_valueh3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valueh3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuei3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(750 + (0.5 * 75 * new_valuei3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuei3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuej3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(825 + (0.5 * 75 * new_valuej3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuej3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuek3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(900 + (0.5 * 75 * new_valuek3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuek3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuel3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(975 + (0.5 * 75 * new_valuel3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuel3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuec3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(300 + (0.5 * 75 * new_valuec3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuec3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valued3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(375 + (0.5 * 75 * new_valued3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valued3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuee3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(450 + (0.5 * 75 * new_valuee3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuee3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuef3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(525 + (0.5 * 75 * new_valuef3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuef3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valueg3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(600 + (0.5 * 75 * new_valueg3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valueg3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valueh3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(675 + (0.5 * 75 * new_valueh3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valueh3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuei3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(750 + (0.5 * 75 * new_valuei3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuei3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuej3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(825 + (0.5 * 75 * new_valuej3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuej3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuek3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(900 + (0.5 * 75 * new_valuek3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuek3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuel3:
             WazneTadolQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(975 + (0.5 * 75 * new_valuel3))} kg</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int(new_valueb16 + (0.5 * 75 * new_valuel3))} kg</div>
             """
             st.markdown(WazneTadolQuantity, unsafe_allow_html=True)
     cols = st.columns(2)
@@ -2028,152 +2122,152 @@ if st.button('ثبت'):
     with cols[1]:
         if new_valueb14 == new_valuec14 and new_valueb3 == new_valuec3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((300 + (0.5 * 75 * new_valuec3))/45)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuec3))/45)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valued3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((375 + (0.5 * 75 * new_valued3))/45)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valued3))/45)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuee3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((450 + (0.5 * 75 * new_valuee3))/45)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuee3))/45)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuef3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((525 + (0.5 * 75 * new_valuef3))/45)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuef3))/45)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valueg3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((600 + (0.5 * 75 * new_valueg3))/45)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valueg3))/45)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valueh3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((675 + (0.5 * 75 * new_valueh3))/45)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valueh3))/45)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuei3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((750 + (0.5 * 75 * new_valuei3))/45)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuei3))/45)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuej3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((825 + (0.5 * 75 * new_valuej3))/45)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuej3))/45)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuek3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((900 + (0.5 * 75 * new_valuek3))/45)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuek3))/45)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuec14 and new_valueb3 == new_valuel3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((975 + (0.5 * 75 * new_valuel3))/45)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuel3))/45)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuec3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((300 + (0.5 * 75 * new_valuec3))/52)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuec3))/52)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valued3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((375 + (0.5 * 75 * new_valued3))/52)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valued3))/52)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuee3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((450 + (0.5 * 75 * new_valuee3))/52)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuee3))/52)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuef3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((525 + (0.5 * 75 * new_valuef3))/52)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuef3))/52)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valueg3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((600 + (0.5 * 75 * new_valueg3))/52)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valueg3))/52)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valueh3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((675 + (0.5 * 75 * new_valueh3))/52)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valueh3))/52)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuei3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((750 + (0.5 * 75 * new_valuei3))/52)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuei3))/52)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuej3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((825 + (0.5 * 75 * new_valuej3))/52)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuej3))/52)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuek3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((900 + (0.5 * 75 * new_valuek3))/52)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuek3))/52)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valued14 and new_valueb3 == new_valuel3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((975 + (0.5 * 75 * new_valuel3))/52)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuel3))/52)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuec3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((300 + (0.5 * 75 * new_valuec3))/58)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuec3))/58)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valued3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((375 + (0.5 * 75 * new_valued3))/58)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valued3))/58)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuee3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((450 + (0.5 * 75 * new_valuee3))/58)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuee3))/58)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuef3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((525 + (0.5 * 75 * new_valuef3))/58)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuef3))/58)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valueg3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((600 + (0.5 * 75 * new_valueg3))/58)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valueg3))/58)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valueh3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((675 + (0.5 * 75 * new_valueh3))/58)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valueh3))/58)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuei3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((750 + (0.5 * 75 * new_valuei3))/58)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuei3))/58)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuej3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((825 + (0.5 * 75 * new_valuej3))/58)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuej3))/58)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuek3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((900 + (0.5 * 75 * new_valuek3))/58)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuek3))/58)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
         elif new_valueb14 == new_valuee14 and new_valueb3 == new_valuel3:
             WazneQuantity = f"""
-            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((975 + (0.5 * 75 * new_valuel3))/58)}</div>
+            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{int(new_valueb2) * int((new_valueb16 + (0.5 * 75 * new_valuel3))/58)}</div>
             """
             st.markdown(WazneQuantity, unsafe_allow_html=True)
     cols = st.columns(2)
