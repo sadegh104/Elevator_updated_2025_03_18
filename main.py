@@ -660,7 +660,7 @@ if st.button('ثبت'):
         st.markdown(SimBoxelScore6Description, unsafe_allow_html=True)
     with cols[1]:
         SimBoxelScore6Quantity = f"""
-                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(math.ceil((new_valueb10 * 2) + 1))}</div>
+                            <div style='background-color:#f0f0f0;padding:10px;border-radius:5px;display:block;margin-bottom:5px;height:60px;text-align:center;'>{(int(new_valueb2)) * int(math.ceil((new_valueb10 + new_valueb9) + ((new_valueb6 - 1) * 3.4) + 2))}</div>
                             """
         st.markdown(SimBoxelScore6Quantity, unsafe_allow_html=True)
     cols = st.columns(2)
